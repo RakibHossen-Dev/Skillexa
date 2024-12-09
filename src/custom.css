@@ -1,0 +1,10 @@
+/* @layer utilities {
+  .no-clear {
+    &::-ms-clear {
+      display: none;
+    }
+    &::-webkit-search-cancel-button {
+      display: none;
+    }
+  }
+} */
