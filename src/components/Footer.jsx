@@ -13,7 +13,7 @@ import playstore from "../assets/google-play.png";
 
 const Footer = () => {
   return (
-    <div className="bg-base-200  pt-5">
+    <div className="bg-base-200  pt-5 ">
       <div className="">
         <div className="flex md:flex-row flex-col  gap-5 justify-between items-center mb-4 w-11/12 mx-auto py-3">
           <img className="w-60" src={logo} alt="" />
@@ -96,6 +96,9 @@ const Footer = () => {
               </h3>
               <div className="flex flex-col font-semibold gap-2">
                 <Link className="text-white hover:underline  ease-linear duration-2000">
+                  Modern Slavery Statement
+                </Link>
+                <Link className="text-white hover:underline  ease-linear duration-2000">
                   Terms of Service
                 </Link>
                 <Link className="text-white hover:underline  ease-linear duration-2000">
@@ -107,9 +110,7 @@ const Footer = () => {
                 <Link className="text-white hover:underline  ease-linear duration-2000">
                   Sitemap
                 </Link>
-                <Link className="text-white hover:underline  ease-linear duration-2000">
-                  News
-                </Link>
+
                 <Link className="text-white hover:underline  ease-linear duration-2000">
                   Cookie Policy
                 </Link>
