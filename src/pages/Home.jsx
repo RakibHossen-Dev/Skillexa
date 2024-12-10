@@ -1,7 +1,11 @@
+import Featured from "../components/Featured";
+import Testimonial from "../components/Testimonial";
+
 const Home = () => {
   return (
     <div>
-      <h3>This is Home Page</h3>
+      <Featured></Featured>
+      <Testimonial></Testimonial>
     </div>
   );
 };
