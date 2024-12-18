@@ -16,7 +16,7 @@ const Footer = () => {
     <div className="bg-base-200  pt-5 ">
       <div className="">
         <div className="flex md:flex-row flex-col  gap-5 justify-between items-center mb-4 w-11/12 mx-auto py-3">
-          <img className="w-60" src={logo} alt="" />
+          <img className="w-52 mb-5" src={logo} alt="" />
           <div className="flex items-center gap-3">
             <Link>
               <FaLinkedin className="text-4xl bg-blue-700  text-white p-2 rounded-full  hover:bg-black transition-all ease-linear duration-200 " />

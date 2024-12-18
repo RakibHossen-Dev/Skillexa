@@ -29,12 +29,12 @@ const Navbar = () => {
   }, []);
 
   return (
-    <div className="shadow-lg">
-      <nav className="w-11/12 mx-auto flex gap-4 justify-between items-center py-4 relative">
+    <div className="shadow-sm border-b ">
+      <nav className="w-11/12 mx-auto  flex gap-4 justify-between items-center py-4 relative">
         {/* Left Section */}
-        <div className="flex items-center gap-5">
+        <div className="flex  items-center gap-5">
           <Link to="/">
-            <img className="lg:w-60 w-40" src={logo} alt="Logo" />
+            <img className=" w-40 mb-5 " src={logo} alt="Logo" />
           </Link>
 
           {/* Learn Dropdown */}
