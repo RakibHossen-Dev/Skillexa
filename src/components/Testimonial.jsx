@@ -1,140 +1,3 @@
-// import { MdArrowBack, MdArrowForward } from "react-icons/md";
-// import testimonial from "../assets/testimonial1.jpg";
-// import { useRef } from "react";
-
-// const Testimonial = () => {
-//   const slider = useRef();
-//   let tx = 0;
-//   const sildeForward = () => {
-//     if (tx > -50) {
-//       tx -= 25;
-//     }
-//     slider.current.style.transform = `translateX(${tx}%)`;
-//   };
-//   const sildBackward = () => {
-//     if (tx > 0) {
-//       tx += 25;
-//     }
-//     slider.current.style.transform = `translateX(${tx}%)`;
-//   };
-
-//   return (
-//     <div className="w-11/12 mx-auto my-16">
-//       <h4 className="text-xl text-blue-700 text-center mb-2 uppercase">
-//         Testimonial
-//       </h4>
-//       <h3 className="text-3xl font-bold text-black text-center">
-//         What Student and Instructor's Says
-//       </h3>
-//       <div className="my-20 mx-auto py-0 px-20">
-//         <button onClick={sildeForward}>
-//           <MdArrowForward className="text-white md:text-3xl lg:text-5xl bg-blue-700 rounded-full p-2 absolute top-1/2 right-0 -translate-y-1/2" />
-//         </button>
-//         <button onClick={sildBackward}>
-//           <MdArrowBack className="text-white  md:text-3xl lg:text-5xl bg-blue-700 rounded-full p-2  absolute top-1/2 right-auto left-0 -translate-y-1/2" />
-//         </button>
-//         <div className="overflow-hidden">
-//           <ul
-//             ref={slider}
-//             className="flex gap-5 w-[200%] overflow-x-hidden transition-all ease-linear duration-200"
-//           >
-//             <li className="w-1/2">
-//               <div className="shadow-2xl p-8 rounded-sm space-y-5">
-//                 <div className="flex items-center gap-2">
-//                   <img
-//                     className="w-14 h-14 rounded-full border-4 border-blue-700"
-//                     src={testimonial}
-//                     alt=""
-//                   />
-//                   <div>
-//                     <h3 className="text-xl font-semibold text-blue-700">
-//                       Ayesha Rahman
-//                     </h3>
-//                     <p>Edusity, USA</p>
-//                   </div>
-//                 </div>
-//                 <p>
-//                   Skillexa has completely changed my approach to learning. The
-//                   courses are well-structured, engaging, and easy to follow. I
-//                   gained real-world skills that I could apply immediately!
-//                 </p>
-//               </div>
-//             </li>
-//             <li className="w-1/2">
-//               <div className="shadow-2xl p-8 rounded-sm space-y-5">
-//                 <div className="flex items-center gap-2">
-//                   <img
-//                     className="w-14 h-14 rounded-full border-4 border-blue-700"
-//                     src={testimonial}
-//                     alt=""
-//                   />
-//                   <div>
-//                     <h3 className="text-xl font-semibold text-blue-700">
-//                       Ayesha Rahman
-//                     </h3>
-//                     <p>Edusity, USA</p>
-//                   </div>
-//                 </div>
-//                 <p>
-//                   Skillexa has completely changed my approach to learning. The
-//                   courses are well-structured, engaging, and easy to follow. I
-//                   gained real-world skills that I could apply immediately!
-//                 </p>
-//               </div>
-//             </li>
-//             <li className="w-1/2">
-//               <div className="shadow-lg p-8 rounded-sm space-y-5">
-//                 <div className="flex items-center gap-2">
-//                   <img
-//                     className="w-14 h-14 rounded-full border-4 border-blue-700"
-//                     src={testimonial}
-//                     alt=""
-//                   />
-//                   <div>
-//                     <h3 className="text-xl font-semibold text-blue-700">
-//                       Ayesha Rahman
-//                     </h3>
-//                     <p>Edusity, USA</p>
-//                   </div>
-//                 </div>
-//                 <p>
-//                   Skillexa has completely changed my approach to learning. The
-//                   courses are well-structured, engaging, and easy to follow. I
-//                   gained real-world skills that I could apply immediately!
-//                 </p>
-//               </div>
-//             </li>
-//             <li className="w-1/2">
-//               <div className="shadow-lg p-8 rounded-sm space-y-5">
-//                 <div className="flex items-center gap-2">
-//                   <img
-//                     className="w-14 h-14 rounded-full border-4 border-blue-700"
-//                     src={testimonial}
-//                     alt=""
-//                   />
-//                   <div>
-//                     <h3 className="text-xl font-semibold text-blue-700">
-//                       Ayesha Rahman
-//                     </h3>
-//                     <p>Edusity, USA</p>
-//                   </div>
-//                 </div>
-//                 <p>
-//                   Skillexa has completely changed my approach to learning. The
-//                   courses are well-structured, engaging, and easy to follow. I
-//                   gained real-world skills that I could apply immediately!
-//                 </p>
-//               </div>
-//             </li>
-//           </ul>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default Testimonial;
-
 import { MdArrowBack, MdArrowForward } from "react-icons/md";
 import testimonial from "../assets/testimonial1.jpg";
 import { useRef } from "react";
@@ -159,12 +22,15 @@ const Testimonial = () => {
 
   return (
     <div className="w-11/12 mx-auto my-16  pb-10">
-      <h4 className="text-xl text-blue-700 text-center mb-1 uppercase">
+      <h2 className="text-center text-3xl font-bold text-black mb-8">
+        What <span className="text-blue-700">Students Say</span>
+      </h2>
+      {/* <h4 className="text-xl text-blue-700 text-center mb-1 uppercase">
         Testimonial
       </h4>
       <h3 className="text-3xl font-bold text-black text-center">
         What Students and Instructors Say
-      </h3>
+      </h3> */}
       <div className="my-8 mx-auto py-0 md:px-20 px-10 relative">
         <button onClick={sildeForward}>
           <MdArrowForward className="text-white text-3xl p-1 lg:text-5xl bg-blue-700 rounded-full md:p-2 absolute top-1/2 right-0 -translate-y-1/2" />
@@ -199,8 +65,8 @@ const Testimonial = () => {
                 </p>
               </div>
             </li> */}
-            <li className="w-1/4 border ">
-              <div className="shadow-custom  lg:p-14 p-6 rounded-sm space-y-5">
+            <li className="w-1/4 border lg:h-auto h-80 ">
+              <div className="  lg:p-14 p-6 rounded-sm space-y-5">
                 <div className="flex  items-center gap-2">
                   <img
                     className="w-14 h-14 rounded-full border-4 border-blue-700"
@@ -220,8 +86,8 @@ const Testimonial = () => {
                 </p>
               </div>
             </li>
-            <li className="w-1/4 border">
-              <div className="shadow-custom  lg:p-14 p-6 rounded-sm space-y-5">
+            <li className="w-1/4 border lg:h-auto h-80 ">
+              <div className="  lg:p-14 p-6 rounded-sm space-y-5">
                 <div className="flex items-center gap-2">
                   <img
                     className="w-14 h-14 rounded-full border-4 border-blue-700"
@@ -241,8 +107,8 @@ const Testimonial = () => {
                 </p>
               </div>
             </li>
-            <li className="w-1/4 border">
-              <div className="shadow-custom lg:p-14 p-6 rounded-sm space-y-5">
+            <li className="w-1/4 border lg:h-auto h-80 ">
+              <div className=" lg:p-14 p-6 rounded-sm space-y-5">
                 <div className="flex items-center gap-2">
                   <img
                     className="w-14 h-14 rounded-full border-4 border-blue-700"
@@ -262,8 +128,8 @@ const Testimonial = () => {
                 </p>
               </div>
             </li>
-            <li className="w-1/4 border">
-              <div className="shadow-custom lg:p-14 p-6 rounded-sm space-y-5">
+            <li className="w-1/4 border lg:h-auto h-80 ">
+              <div className=" lg:p-14 p-6 rounded-sm space-y-5">
                 <div className="flex items-center gap-2">
                   <img
                     className="w-14 h-14 rounded-full border-4 border-blue-700"

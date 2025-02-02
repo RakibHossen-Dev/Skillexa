@@ -15,7 +15,7 @@ const Footer = () => {
   return (
     <div className="bg-base-200  pt-5 ">
       <div className="">
-        <div className="flex md:flex-row flex-col  gap-5 justify-between items-center mb-4 w-11/12 mx-auto py-3">
+        <div className="flex md:flex-row flex-col  gap-5 justify-between items-center mb-4 w-11/12 mx-auto lg:py-1 py-3">
           <img className="w-52 mb-5" src={logo} alt="" />
           <div className="flex items-center gap-3">
             <Link>

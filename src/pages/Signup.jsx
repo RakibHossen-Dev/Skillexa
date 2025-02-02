@@ -10,8 +10,8 @@ const Signup = () => {
     <div>
       <div className="my-16 w-11/12 mx-auto">
         <div className="min-h-screen flex justify-center items-center">
-          <div className="card shadow-lg dark:border dark:border-orange-500 w-full max-w-lg shrink-0 rounded-none py-4 px-2 md:p-10">
-            <h2 className="text-center text-2xl font-semibold dark:text-orange-500">
+          <div className="card shadow-lg  w-full max-w-lg shrink-0 rounded-none py-4 px-2 md:p-10">
+            <h2 className="text-center text-2xl font-semibold ">
               Sign-up your account
             </h2>
             <button
@@ -19,16 +19,16 @@ const Signup = () => {
               className="border my-3 py-2 border-black mx-8  dark:border-orange-500 flex gap-2 items-center justify-center"
             >
               <FcGoogle className="text-xl" />
-              <p className="dark:text-white">Signin With Google</p>
+              <p className="">Signin With Google</p>
             </button>
-            <p className="text-center mt-2 dark:text-white">OR</p>
+            <p className="text-center mt-2 ">OR</p>
             <form
               // onSubmit={handleRegisterwithEmail}
               className="card-body"
             >
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text dark:text-orange-500">Name</span>
+                  <span className="label-text ">Name</span>
                 </label>
                 <input
                   type="text"
@@ -56,7 +56,7 @@ const Signup = () => {
 
               <div className="form-control">
                 <label className="label ">
-                  <span className="label-text dark:text-orange-500">Email</span>
+                  <span className="label-text ">Email</span>
                 </label>
                 <input
                   type="email"
@@ -69,7 +69,7 @@ const Signup = () => {
 
               <div className="form-control relative">
                 <label className="label">
-                  <span className="label-text dark:text-orange-500">
+                  <span className="label-text ">
                     Password
                   </span>
                 </label>
@@ -95,7 +95,7 @@ const Signup = () => {
                 </button>
               </div>
             </form>
-            <p className="text-center dark:text-white">
+            <p className="text-center ">
               Already Have An Account ? {""}
               <Link className="text-blue-700" to="/signin">
                 Sign-in

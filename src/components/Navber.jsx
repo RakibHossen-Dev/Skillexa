@@ -30,7 +30,7 @@ const Navbar = () => {
 
   return (
     <div className="shadow-sm border-b ">
-      <nav className="w-11/12 mx-auto  flex gap-4 justify-between items-center py-4 relative">
+      <nav className="w-11/12 mx-auto  flex gap-4 justify-between items-center py-2 relative">
         {/* Left Section */}
         <div className="flex  items-center gap-5">
           <Link to="/">

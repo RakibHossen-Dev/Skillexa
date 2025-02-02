@@ -9,8 +9,8 @@ const Signin = () => {
     <div>
       <div className="w-11/12 mx-auto my-10">
         <div className="min-h-screen flex justify-center items-center">
-          <div className="card shadow-lg dark:border dark:border-orange-500 w-full max-w-lg shrink-0 rounded-none py-4 px-2 md:p-10 ">
-            <h2 className="text-center dark:text-white mb-3 text-2xl font-semibold">
+          <div className="card shadow-lg  w-full max-w-lg shrink-0 rounded-none py-4 px-2 md:p-10 ">
+            <h2 className="text-center  mb-3 text-2xl font-semibold">
               Sign-in your account
             </h2>
             <button
@@ -18,7 +18,7 @@ const Signin = () => {
               className="border my-3 py-2 border-black dark:border-orange-500 mx-8  flex gap-2 items-center justify-center"
             >
               <FcGoogle className="text-xl " />
-              <p className="dark:text-white">Signin With Google</p>
+              <p className="">Signin With Google</p>
             </button>
             <p className="text-center dark:text-white mt-2">OR</p>
 
@@ -75,7 +75,7 @@ const Signin = () => {
               </div>
             </form>
 
-            <p className="text-center dark:text-white">
+            <p className="text-center ">
               Dont’t Have An Account ? {""}
               <Link className="text-blue-700" to="/signup">
                 Sign-up
