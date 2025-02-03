@@ -6,10 +6,15 @@ import { IoIosArrowDown } from "react-icons/io";
 import { CiSearch } from "react-icons/ci";
 import { GrCart } from "react-icons/gr";
 import { HiOutlineBars3BottomRight } from "react-icons/hi2";
+import useAuth from "../hooks/useAuth";
+import { LuLayoutDashboard } from "react-icons/lu";
+import { IoNotificationsOutline } from "react-icons/io5";
 
 const Navbar = () => {
-  const [open, setOpen] = useState(false);
+  const { user } = useAuth();
 
+  const [open, setOpen] = useState(false);
+  console.log(user);
   // Close sidebar on larger screen sizes
   useEffect(() => {
     const handleResize = () => {
@@ -39,7 +44,7 @@ const Navbar = () => {
 
           {/* Learn Dropdown */}
           <div className="hidden lg:block">
-            <div className="flex items-center gap-2 py-2 px-4 border text-blue-700 border-blue-700 cursor-pointer">
+            <div className="flex items-center rounded-lg gap-2 py-2 px-4 border text-blue-700 border-blue-700 cursor-pointer">
               <p>Learn</p>
               <IoIosArrowDown className="text-blue-700" />
             </div>
@@ -47,7 +52,7 @@ const Navbar = () => {
 
           {/* Search Bar */}
           <div className="hidden lg:block">
-            <div className="border border-blue-700 py-1 flex items-center px-2">
+            <div className="border rounded-lg border-blue-700 py-1 flex items-center px-2">
               <input
                 className="focus:outline-none w-96"
                 type="search"
@@ -68,7 +73,10 @@ const Navbar = () => {
         {/* Right Section */}
         <div className="hidden lg:flex items-center gap-4">
           {/* Cart */}
-          <div className="relative">
+          <div className="relative flex items-center gap-3">
+            <div>
+              <IoNotificationsOutline className="text-blue-700 text-2xl cursor-pointer" />
+            </div>
             <div className="indicator cursor-pointer">
               <GrCart className="text-2xl" />
               <span className="rounded-full text-white bg-blue-700 badge-md indicator-item">
@@ -78,18 +86,29 @@ const Navbar = () => {
           </div>
 
           {/* Sign In/Sign Up */}
-          <Link
-            to="/signin"
-            className="text-blue-700 border border-blue-700 py-2 px-5"
-          >
-            Sign in
-          </Link>
-          <Link
-            to="/signup"
-            className="text-white bg-blue-700 py-2 font-bold px-5"
-          >
-            Sign up
-          </Link>
+          {user ? (
+            <Link to="/dashboard">
+              <button className="border my-3 py-2 px-6 border-blue-600 bg-blue-600 text-white  flex items-center justify-center rounded-lg hover:bg-blue-700 transition">
+                <LuLayoutDashboard className="text-xl mr-2" />
+                <span className="font-medium">Dashboard</span>
+              </button>
+            </Link>
+          ) : (
+            <>
+              <Link
+                to="/signin"
+                className="text-blue-700 border border-blue-700 py-2 px-5 rounded-lg"
+              >
+                Sign in
+              </Link>
+              <Link
+                to="/signup"
+                className="text-white bg-blue-700 py-2 font-bold px-5 rounded-lg"
+              >
+                Sign up
+              </Link>
+            </>
+          )}
         </div>
 
         {/* Mobile Section */}
@@ -117,7 +136,7 @@ const Navbar = () => {
 
         {/* Mobile Menu */}
         <div
-          className={`fixed top-0 right-0 h-full w-9/12 md:w-4/6 bg-white shadow-lg z-50 transform transition-transform duration-300 ${
+          className={`fixed top-0 right-0 h-full w-9/12 md:w-80 bg-white shadow-lg z-50 transform transition-transform duration-300 ${
             open ? "translate-x-0" : "translate-x-full"
           }`}
         >
