@@ -6,6 +6,7 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
+  FacebookAuthProvider,
   updateProfile,
 } from "firebase/auth";
 import useAxiosPublic from "../hooks/useAxiosPublic";
@@ -21,7 +22,7 @@ const Authprovider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const googleProvider = new GoogleAuthProvider();
-
+  const facebookProvider = new FacebookAuthProvider();
   const createUser = (email, password) => {
     setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password);
@@ -35,6 +36,11 @@ const Authprovider = ({ children }) => {
   const googleSignIn = () => {
     setLoading(true);
     return signInWithPopup(auth, googleProvider);
+  };
+
+  const facebookSignIn = () => {
+    setLoading(true);
+    return signInWithPopup(auth, facebookProvider);
   };
 
   const logOut = () => {
@@ -67,6 +73,7 @@ const Authprovider = ({ children }) => {
     googleSignIn,
     logOut,
     updateUserProfile,
+    facebookSignIn,
     loading,
   };
   return (

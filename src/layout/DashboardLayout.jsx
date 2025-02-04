@@ -9,15 +9,23 @@ import {
   FiLogOut,
 } from "react-icons/fi";
 import useAuth from "../hooks/useAuth";
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 const DashboardLayout = () => {
-  const { user } = useAuth();
+  const { user, logOut } = useAuth();
   // State to manage sidebar visibility
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-
+  const navigate = useNavigate();
   // Function to toggle sidebar
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
+  };
+
+  const handleLogout = () => {
+    logOut();
+    navigate("/signin");
+    toast.success("Logout Successful");
   };
   return (
     <div className="flex h-screen font-quicksand">
@@ -58,7 +66,10 @@ const DashboardLayout = () => {
             <FiSettings size={20} />
             <span>Settings</span>
           </li>
-          <li className="flex items-center space-x-2 p-3 rounded-lg hover:bg-blue-700 cursor-pointer">
+          <li
+            onClick={handleLogout}
+            className="flex items-center space-x-2 p-3 rounded-lg hover:bg-blue-700 cursor-pointer"
+          >
             <FiLogOut size={20} />
             <span>Logout</span>
           </li>
@@ -70,11 +81,11 @@ const DashboardLayout = () => {
         {/* Header with Toggle Button */}
         <div className="p-4 hidden md:flex justify-end items-end bg-white shadow-md">
           <h1 className="text-2xl font-semibold mr-3 mb-1.5">
-            {user.displayName}
+            {user?.displayName}
           </h1>
           <img
             className="w-12  rounded-badge border-2 border-blue-700  h-12"
-            src={user.photoURL}
+            src={user?.photoURL}
             alt=""
           />
         </div>
@@ -87,7 +98,7 @@ const DashboardLayout = () => {
           </button>
           <img
             className="w-12  rounded-badge border-2 border-blue-700  h-12"
-            src={user.photoURL}
+            src={user?.photoURL}
             alt=""
           />
         </div>

@@ -1,15 +1,59 @@
 import React, { useState } from "react";
 import { FaEyeSlash, FaRegEye, FaFacebook } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
+import toast from "react-hot-toast";
+import { useForm } from "react-hook-form";
+import useAxiosPublic from "../hooks/useAxiosPublic";
 
 const Signin = () => {
-  const { googleSignIn } = useAuth();
+  const axiosPublic = useAxiosPublic();
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
+  const navigate = useNavigate();
+  const { googleSignIn, facebookSignIn, signIn } = useAuth();
   const [showPassword, setShowPassword] = useState(false);
 
-  const handleGoogleSign = () => {
-    googleSignIn();
+  const handleGoogleSign = async () => {
+    await googleSignIn().then((result) => {
+      const userInfo = {
+        name: result.user?.displayName,
+        email: result.user?.email,
+        photo: result.user?.photoURL,
+      };
+      axiosPublic.post("/users", userInfo).then((res) => {
+        console.log(res);
+        navigate("/");
+        toast.success("Signin Successful");
+      });
+    });
+  };
+
+  const handleFacebookSignIn = async () => {
+    await facebookSignIn().then((result) => {
+      const userInfo = {
+        name: result.user?.displayName,
+        email: result.user?.email,
+        photo: result.user?.photoURL,
+      };
+      axiosPublic.post("/users", userInfo).then((res) => {
+        console.log(res);
+        navigate("/");
+        toast.success("Signin Successful");
+      });
+    });
+  };
+  const onSubmit = async (data) => {
+    console.log(data);
+    signIn(data.email, data.password).then((res) => {
+      navigate("/");
+      toast.success("Signin Successful");
+    });
   };
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-100 dark:bg-gray-900">
@@ -32,7 +76,10 @@ const Signin = () => {
           </button>
 
           {/* Facebook Sign-in Button */}
-          <button className="border my-3 py-2 border-blue-600 bg-blue-600 text-white w-full flex items-center justify-center rounded-lg hover:bg-blue-700 transition">
+          <button
+            onClick={handleFacebookSignIn}
+            className="border my-3 py-2 border-blue-600 bg-blue-600 text-white w-full flex items-center justify-center rounded-lg hover:bg-blue-700 transition"
+          >
             <FaFacebook className="text-xl mr-2" />
             <span className="font-medium">
               {/* Sign in with  */}
@@ -44,7 +91,7 @@ const Signin = () => {
         {/* <p className="text-center text-gray-500 dark:text-gray-300">OR</p> */}
 
         {/* Sign-in Form */}
-        <form className="mt-4">
+        <form onSubmit={handleSubmit(onSubmit)} className="mt-4">
           <div className="mb-4">
             <label className="block text-gray-700 dark:text-orange-500 font-medium">
               Email Address
@@ -52,6 +99,7 @@ const Signin = () => {
             <input
               type="email"
               name="email"
+              {...register("email", { required: true })}
               placeholder="Enter your email"
               className="w-full px-4 py-2 mt-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white dark:border-gray-600"
               required
@@ -65,6 +113,7 @@ const Signin = () => {
             <input
               type={showPassword ? "text" : "password"}
               name="password"
+              {...register("password", { required: true })}
               placeholder="Enter your password"
               className="w-full px-4 py-2 mt-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white dark:border-gray-600"
               required
