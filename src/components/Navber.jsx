@@ -77,9 +77,9 @@ const Navbar = () => {
             <div>
               <IoNotificationsOutline className="text-blue-700 text-2xl cursor-pointer" />
             </div>
-            <div className="indicator cursor-pointer">
+            <div className="indicator cursor-pointer relative">
               <GrCart className="text-2xl" />
-              <span className="rounded-full text-white bg-blue-700 badge-md indicator-item">
+              <span className="rounded-full absolute  px-2 -top-3 left-3 text-white bg-blue-700 badge-md indicator-item">
                 1
               </span>
             </div>
@@ -87,7 +87,7 @@ const Navbar = () => {
 
           {/* Sign In/Sign Up */}
           {user ? (
-            <Link to="/dashboard">
+            <Link to="/dashboard/instructor">
               <button className="border my-3 py-2 px-6 border-blue-600 bg-blue-600 text-white  flex items-center justify-center rounded-lg hover:bg-blue-700 transition">
                 <LuLayoutDashboard className="text-xl mr-2" />
                 <span className="font-medium">Dashboard</span>
@@ -120,9 +120,9 @@ const Navbar = () => {
 
           {/* Cart */}
           <div className="relative">
-            <div className="indicator cursor-pointer">
+            <div className="indicator cursor-pointer relative">
               <GrCart className="text-2xl" />
-              <span className="rounded-full text-white bg-blue-700 badge-md indicator-item">
+              <span className="rounded-full absolute  px-2 -top-3 left-3 text-white bg-blue-700 badge-md indicator-item">
                 1
               </span>
             </div>
@@ -163,6 +163,35 @@ const Navbar = () => {
                 Learn
               </Link>
             </li>
+
+            {user ? (
+              <Link to="/dashboard">
+                <button className="border my-3 py-2 px-6 border-blue-600 w-full bg-blue-600 text-white  flex items-center justify-center rounded-lg hover:bg-blue-700 transition">
+                  <LuLayoutDashboard className="text-xl mr-2" />
+                  <span className="font-medium">Dashboard</span>
+                </button>
+              </Link>
+            ) : (
+              <>
+                <li>
+                  <Link
+                    to="/signin"
+                    className="text-blue-700 border border-blue-700 py-2 px-4 block text-center"
+                  >
+                    Sign in
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/signup"
+                    className="text-white bg-blue-700 py-2 px-4 block text-center"
+                  >
+                    Sign up
+                  </Link>
+                </li>
+              </>
+            )}
+            {/* 
             <li>
               <Link
                 to="/signin"
@@ -179,6 +208,7 @@ const Navbar = () => {
                 Sign up
               </Link>
             </li>
+             */}
           </ul>
           <button
             className="absolute top-4 right-4 text-3xl text-blue-700"

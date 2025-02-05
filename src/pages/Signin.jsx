@@ -56,11 +56,9 @@ const Signin = () => {
     });
   };
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-100 dark:bg-gray-900">
-      <div className="w-full max-w-md bg-white dark:bg-gray-800 shadow-xl rounded-lg p-8">
-        <h2 className="text-center text-3xl font-bold text-gray-800 dark:text-orange-500">
-          Sign In
-        </h2>
+    <div className="flex justify-center items-center min-h-screen bg-gray-100 ">
+      <div className="w-full max-w-md bg-white shadow-xl rounded-lg p-8">
+        <h2 className="text-center text-3xl font-bold ">Sign In</h2>
 
         <div className="flex justify-bettwen items-center gap-3">
           {/* Google Sign-in Button */}
