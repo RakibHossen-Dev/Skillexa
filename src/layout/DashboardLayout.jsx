@@ -35,7 +35,7 @@ const DashboardLayout = () => {
     <div className="flex h-screen font-quicksand">
       {/* Sidebar */}
       <div
-        className={`fixed inset-y-0 left-0 bg-blue-800 text-white w-64 p-4 transform ${
+        className={`fixed inset-y-0 left-0 bg-blue-800 text-white z-50 w-64 p-4 transform ${
           isSidebarOpen ? "translate-x-0" : "-translate-x-full"
         } md:translate-x-0 transition-transform duration-300 ease-in-out`}
       >
