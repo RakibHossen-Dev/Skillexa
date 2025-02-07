@@ -1,3 +1,4 @@
+import PopularCourses from "@/components/PopularCourses";
 import Banner from "../components/Banner";
 import Blogs from "../components/Blogs";
 import Featured from "../components/Featured";
@@ -12,6 +13,7 @@ const Home = () => {
     <div>
       <Banner></Banner>
       <Featured></Featured>
+      <PopularCourses></PopularCourses>
       <UsersPoster></UsersPoster>
       {/* <PopularCategories><PopularCategories> */}
       <PopularCategories></PopularCategories>

@@ -10,6 +10,8 @@ import AddCourse from "../pages/dashboard/instructor/AddCourse";
 import Students from "../pages/dashboard/instructor/Students";
 import Courses from "../pages/dashboard/instructor/Courses";
 import Profile from "../pages/dashboard/instructor/Profile";
+import CourseDetails from "@/pages/CourseDetails";
+import AllCourse from "@/pages/AllCourse";
 
 const router = createBrowserRouter([
   {
@@ -25,8 +27,16 @@ const router = createBrowserRouter([
         element: <BlogDetails></BlogDetails>,
       },
       {
+        path: "/courseDetails/:id",
+        element: <CourseDetails></CourseDetails>,
+      },
+      {
         path: "/signin",
         element: <Signin></Signin>,
+      },
+      {
+        path: "/allCourse",
+        element: <AllCourse></AllCourse>,
       },
       {
         path: "/signup",
