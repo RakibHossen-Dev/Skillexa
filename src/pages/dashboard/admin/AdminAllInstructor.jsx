@@ -1,3 +1,11 @@
+// const AdminAllInstructor = () => {
+//   return (
+//     <div className="w-11/12 mx-auto my-10">This is AdminAllInstructor</div>
+//   );
+// };
+
+// export default AdminAllInstructor;
+
 import useAxiosPublic from "@/hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
 import {
@@ -10,7 +18,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
-const AdminAllStudents = () => {
+const AdminAllInstructor = () => {
   const axiosPublic = useAxiosPublic();
   const { data: allUsers = [], refetch } = useQuery({
     queryKey: ["allUser"],
@@ -35,7 +43,7 @@ const AdminAllStudents = () => {
           </TableHeader>
           <TableBody>
             {allUsers
-              ?.filter((allUser) => allUser.role === "student")
+              ?.filter((allUser) => allUser.role === "instructor")
               .map((allUser) => (
                 <TableRow key={allUser._id}>
                   <TableCell className="font-medium capitalize">
@@ -66,4 +74,4 @@ const AdminAllStudents = () => {
   );
 };
 
-export default AdminAllStudents;
+export default AdminAllInstructor;

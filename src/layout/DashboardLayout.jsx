@@ -120,13 +120,13 @@ const DashboardLayout = () => {
                   <span> All Courses</span>
                 </li>
               </Link>
-              <Link to="/dashboard/students">
+              <Link to="/dashboard/adminAllstudents">
                 <li className="flex items-center space-x-2 p-3  mb-1 rounded-lg hover:bg-blue-700 cursor-pointer">
                   <FaUserGraduate size={20} />
                   <span>All Students</span>
                 </li>
               </Link>
-              <Link to="/dashboard/instructors">
+              <Link to="/dashboard/adminAllinstructor">
                 <li className="flex items-center space-x-2 p-3 mb-1 rounded-lg hover:bg-blue-700 cursor-pointer">
                   <FaChalkboardTeacher size={20} />
                   <span>All Instructors</span>

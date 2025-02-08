@@ -13,6 +13,8 @@ import Profile from "../pages/dashboard/instructor/Profile";
 import CourseDetails from "@/pages/CourseDetails";
 import AllCourse from "@/pages/AllCourse";
 import AdminAllCoures from "@/pages/dashboard/admin/AdminAllCoures";
+import AdminAllStudents from "@/pages/dashboard/admin/AdminAllStudents";
+import AdminAllInstructor from "@/pages/dashboard/admin/AdminAllInstructor";
 
 const router = createBrowserRouter([
   {
@@ -64,6 +66,14 @@ const router = createBrowserRouter([
       {
         path: "adminAllcourses",
         element: <AdminAllCoures></AdminAllCoures>,
+      },
+      {
+        path: "adminAllstudents",
+        element: <AdminAllStudents></AdminAllStudents>,
+      },
+      {
+        path: "adminAllinstructor",
+        element: <AdminAllInstructor></AdminAllInstructor>,
       },
 
       {
