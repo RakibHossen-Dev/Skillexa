@@ -107,7 +107,7 @@ const CourseDetails = () => {
             />
             <div className="p-3 space-y-2">
               <p className="text-3xl font-bold text-blue-500">
-                ${courses?.price}
+                {courses?.price ? <>${courses?.price}</> : "Free"}
               </p>
               <div className="flex justify-between items-center">
                 <p>Ratting : 4.5</p>
@@ -117,9 +117,15 @@ const CourseDetails = () => {
                 </p>
               </div>
               <div>
-                <Button className="w-full bg-blue-700 hover:bg-blue-900">
-                  Enroll Now
-                </Button>
+                {courses?.price ? (
+                  <Button className="w-full bg-blue-700 hover:bg-blue-900">
+                    Enroll Now
+                  </Button>
+                ) : (
+                  <Button className="w-full bg-blue-700 hover:bg-blue-900">
+                    Start Learning
+                  </Button>
+                )}
               </div>
               <h3 className="text-lg font-semibold">What's in the courese</h3>
               {/* <ul> */}

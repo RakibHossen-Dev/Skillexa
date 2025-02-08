@@ -12,6 +12,7 @@ import Courses from "../pages/dashboard/instructor/Courses";
 import Profile from "../pages/dashboard/instructor/Profile";
 import CourseDetails from "@/pages/CourseDetails";
 import AllCourse from "@/pages/AllCourse";
+import AdminAllCoures from "@/pages/dashboard/admin/AdminAllCoures";
 
 const router = createBrowserRouter([
   {
@@ -60,6 +61,11 @@ const router = createBrowserRouter([
         path: "courses",
         element: <Courses></Courses>,
       },
+      {
+        path: "adminAllcourses",
+        element: <AdminAllCoures></AdminAllCoures>,
+      },
+
       {
         path: "students",
         element: <Students></Students>,

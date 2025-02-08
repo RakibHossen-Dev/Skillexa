@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@radix-ui/react-accordion": "^1.2.3",
+    "@radix-ui/react-checkbox": "^1.1.4",
     "@radix-ui/react-dialog": "^1.1.6",
     "@radix-ui/react-menubar": "^1.1.5",
     "@radix-ui/react-navigation-menu": "^1.2.4",
@@ -36,6 +37,7 @@
     "react-router-dom": "^7.0.2",
     "react-select": "^5.10.0",
     "sort-by": "^1.2.0",
+    "sweetalert2": "^11.15.10",
     "swiper": "^11.1.15",
     "tailwind-merge": "^3.0.1",
     "tailwindcss-animate": "^1.0.7"
@@ -46,6 +48,7 @@
     "@types/react-dom": "^18.3.1",
     "@vitejs/plugin-react": "^4.3.4",
     "autoprefixer": "^10.4.20",
+    "daisyui": "^4.12.23",
     "eslint": "^9.15.0",
     "eslint-plugin-react": "^7.37.2",
     "eslint-plugin-react-hooks": "^5.0.0",

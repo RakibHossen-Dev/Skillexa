@@ -1,24 +1,11 @@
-// import useAuth from "@/hooks/useAuth";
-
-// const Profile = () => {
-//   const { user, logOut } = useAuth();
-
-//   return (
-//     <div className="flex justify-center items-center min-h-screen ">
-//       <div className="bg-white p-10 rounded-lg">
-//         <img src={user?.photoURL} alt="" />
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default Profile;
 import useAuth from "@/hooks/useAuth";
 import { Button } from "@/components/ui/button";
 import { FaFacebook, FaTwitter, FaDribbble, FaGithub } from "react-icons/fa";
+import useUserRole from "@/hooks/useUserRole";
 
 const Profile = () => {
   const { user, logOut } = useAuth();
+  const [userRole] = useUserRole();
 
   return (
     <div className="flex justify-center items-center min-h-screen w-11/12 mx-auto ">
@@ -47,7 +34,7 @@ const Profile = () => {
           <h2 className="text-2xl font-semibold mt-3">
             {user?.displayName || "User Name"}
           </h2>
-          <p className="text-black">UI/UX Designer</p>
+          <p className="text-black capitalize">{userRole}</p>
         </div>
 
         {/* Stats */}

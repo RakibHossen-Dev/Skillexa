@@ -9,12 +9,29 @@ import { HiOutlineBars3BottomRight } from "react-icons/hi2";
 import useAuth from "../hooks/useAuth";
 import { LuLayoutDashboard } from "react-icons/lu";
 import { IoNotificationsOutline } from "react-icons/io5";
-
+// Hello
+import technology from "../assets/categoryImages/technology.png";
+import contentCreation from "../assets/categoryImages/content-creation.png";
+import business from "../assets/categoryImages/business.png";
+import coaching from "../assets/categoryImages/coaching.png";
+import languageLearning from "../assets/categoryImages/languageLearning.png";
+import teaching from "../assets/categoryImages/teaching.png";
+import passiveIcome from "../assets/categoryImages/passive-income.png";
+import photoGraphy from "../assets/categoryImages/photography.png";
+import useUserRole from "@/hooks/useUserRole";
+// Hello
 const Navbar = () => {
   const { user } = useAuth();
+  const [isOpen, setIsOpen] = useState(false);
 
+  const toggleMenu = () => setIsOpen(!isOpen);
   const [open, setOpen] = useState(false);
   console.log(user);
+
+  const [userRole] = useUserRole();
+
+  // console.log(userRole);
+
   // Close sidebar on larger screen sizes
   useEffect(() => {
     const handleResize = () => {
@@ -44,9 +61,131 @@ const Navbar = () => {
 
           {/* Learn Dropdown */}
           <div className="hidden lg:block">
-            <div className="flex items-center rounded-lg gap-2 py-2 px-4 border text-blue-700 border-blue-700 cursor-pointer">
-              <p>Learn</p>
-              <IoIosArrowDown className="text-blue-700" />
+            <div className="relative z-20">
+              <button
+                className="flex items-center rounded-lg gap-2 py-2 px-4 border text-blue-700 border-blue-700 cursor-pointer"
+                onClick={toggleMenu}
+              >
+                <p>Learn</p>
+                <IoIosArrowDown className="text-blue-700" />
+              </button>
+              {isOpen && (
+                <div className="absolute left-0 mt-6 bg-white border rounded-sm shadow-lg p-2 w-[550px]">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
+                    {/* Category 1 */}
+                    <div className="flex flex-col justify-center items-center gap-2 border rounded-sm p-2 shadow-md hover:shadow-lg transition-shadow duration-300 ease-in-out">
+                      <img
+                        className="h-[80px] object-cover "
+                        src={technology}
+                        alt="Technology"
+                      />
+                      <div className="">
+                        <h3 className="text-blue-700  font-semibold mb-2">
+                          Technology
+                        </h3>
+                      </div>
+                    </div>
+
+                    {/* Category 2 */}
+                    <div className="flex flex-col  justify-center items-center gap-2 border rounded-sm p-2 shadow-md hover:shadow-lg transition-shadow duration-300 ease-in-out">
+                      <img
+                        className=" h-[80px] object-cover "
+                        src={contentCreation}
+                        alt="Content Creation"
+                      />
+                      <div className="">
+                        <h3 className="text-blue-700  font-semibold mb-2">
+                          Content Creation
+                        </h3>
+                      </div>
+                    </div>
+
+                    {/* Category 3 */}
+                    <div className="flex  flex-col  justify-center items-center gap-2 border rounded-sm p-2 shadow-md hover:shadow-lg transition-shadow duration-300 ease-in-out">
+                      <img
+                        className="h-[80px] object-cover "
+                        src={business}
+                        alt="Online Business"
+                      />
+                      <div className="">
+                        <h3 className="text-blue-700  font-semibold mb-2">
+                          Online Business
+                        </h3>
+                      </div>
+                    </div>
+
+                    {/* Category 4 */}
+                    <div className="flex  flex-col  justify-center items-center gap-2 border rounded-sm p-2 shadow-md hover:shadow-lg transition-shadow duration-300 ease-in-out">
+                      <img
+                        className="h-[80px] object-cover"
+                        src={coaching}
+                        alt="Coaching"
+                      />
+                      <div className="">
+                        <h3 className="text-blue-700  font-semibold mb-2">
+                          Coaching
+                        </h3>
+                      </div>
+                    </div>
+
+                    {/* Category 5 */}
+                    <div className="flex  flex-col  justify-center items-center gap-2 border rounded-sm p-2 shadow-md hover:shadow-lg transition-shadow duration-300 ease-in-out">
+                      <img
+                        className=" h-[80px] object-cover "
+                        src={languageLearning}
+                        alt="Language Learning"
+                      />
+                      <div className="">
+                        <h3 className="text-blue-700  font-semibold mb-2">
+                          Language Learning
+                        </h3>
+                      </div>
+                    </div>
+
+                    {/* Category 6 */}
+                    <div className="flex  flex-col  justify-center items-center gap-2 border rounded-sm p-2 shadow-md hover:shadow-lg transition-shadow duration-300 ease-in-out">
+                      <img
+                        className=" h-[80px] object-cover "
+                        src={teaching}
+                        alt="Teaching"
+                      />
+                      <div className="">
+                        <h3 className="text-blue-700  font-semibold mb-2">
+                          Teaching
+                        </h3>
+                      </div>
+                    </div>
+
+                    {/* Category 7 */}
+                    <div className="flex  flex-col  justify-center items-center gap-2 border rounded-sm p-2 shadow-md hover:shadow-lg transition-shadow duration-300 ease-in-out">
+                      <img
+                        className=" h-[80px] object-cover "
+                        src={passiveIcome}
+                        alt="Passive Income"
+                      />
+                      <div className="">
+                        <h3 className="text-blue-700 font-semibold  mb-2">
+                          Passive Income
+                        </h3>
+                      </div>
+                    </div>
+
+                    {/* Category 8 */}
+                    <div className="flex  flex-col  justify-center items-center gap-2 border rounded-sm p-2 shadow-md hover:shadow-lg transition-shadow duration-300 ease-in-out">
+                      <img
+                        className=" h-[80px] object-cover "
+                        src={photoGraphy}
+                        alt="Photography"
+                      />
+                      <div className="">
+                        <h3 className="text-blue-700 font-semibold mb-2">
+                          Photography
+                        </h3>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
 
@@ -79,7 +218,7 @@ const Navbar = () => {
             </div>
             <div className="indicator cursor-pointer relative">
               <GrCart className="text-2xl" />
-              <span className="rounded-full absolute  px-2 -top-3 left-3 text-white bg-blue-700 badge-md indicator-item">
+              <span className="rounded-full absolute  px-2 py-1 top-0 left-2 text-white bg-blue-700 badge-md indicator-item">
                 1
               </span>
             </div>
@@ -159,9 +298,7 @@ const Navbar = () => {
               </div>
             </li>
             <li>
-              <Link to="/learn" className="text-blue-700">
-                Learn
-              </Link>
+              <button className="text-blue-700">Learn</button>
             </li>
 
             {user ? (

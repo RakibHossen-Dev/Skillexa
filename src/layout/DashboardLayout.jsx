@@ -10,14 +10,20 @@ import {
   FiPlusCircle,
   FiUser,
 } from "react-icons/fi";
+import { FaChalkboardTeacher, FaUserGraduate } from "react-icons/fa";
 import { IoHomeOutline } from "react-icons/io5";
-import useAuth from "../hooks/useAuth";
+import { MdSpaceDashboard } from "react-icons/md";
+// import useAuth from "../hooks/useAuth";
 import toast from "react-hot-toast";
 import { Outlet, useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import useUserRole from "@/hooks/useUserRole";
+import useAuth from "@/hooks/useAuth";
 
 const DashboardLayout = () => {
   const { user, logOut } = useAuth();
+  const [userRole] = useUserRole();
+
   // State to manage sidebar visibility
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const navigate = useNavigate();
@@ -54,31 +60,81 @@ const DashboardLayout = () => {
 
         {/* Sidebar Links */}
         <ul className="space-y-3">
-          <Link to="/dashboard/instructor">
-            <li className="flex items-center space-x-2 p-3 mb-1  rounded-lg hover:bg-blue-700 cursor-pointer">
-              <FiHome size={20} />
-              <span>Dashboard</span>
-            </li>
-          </Link>
-          <Link to="/dashboard/addCourse">
-            <li className="flex items-center space-x-2 p-3  mb-1 rounded-lg hover:bg-blue-700 cursor-pointer">
-              <FiPlusCircle size={20} />
-              <span>Add Course</span>
-            </li>
-          </Link>
+          {userRole === "instructor" && (
+            <>
+              <Link to="/dashboard/instructor">
+                <li className="flex items-center space-x-2 p-3 mb-1  rounded-lg hover:bg-blue-700 cursor-pointer">
+                  <FiHome size={20} />
+                  <span>Dashboard</span>
+                </li>
+              </Link>
+              <Link to="/dashboard/addCourse">
+                <li className="flex items-center space-x-2 p-3  mb-1 rounded-lg hover:bg-blue-700 cursor-pointer">
+                  <FiPlusCircle size={20} />
+                  <span>Add Course</span>
+                </li>
+              </Link>
 
-          <Link to="/dashboard/courses">
-            <li className="flex items-center space-x-2 p-3  mb-1 rounded-lg hover:bg-blue-700 cursor-pointer">
-              <FiBook size={20} />
-              <span>Courses</span>
-            </li>
-          </Link>
-          <Link to="/dashboard/students">
-            <li className="flex items-center space-x-2 p-3  mb-1 rounded-lg hover:bg-blue-700 cursor-pointer">
-              <FiUsers size={20} />
-              <span>Students</span>
-            </li>
-          </Link>
+              <Link to="/dashboard/courses">
+                <li className="flex items-center space-x-2 p-3  mb-1 rounded-lg hover:bg-blue-700 cursor-pointer">
+                  <FiBook size={20} />
+                  <span>Courses</span>
+                </li>
+              </Link>
+              <Link to="/dashboard/students">
+                <li className="flex items-center space-x-2 p-3  mb-1 rounded-lg hover:bg-blue-700 cursor-pointer">
+                  <FiUsers size={20} />
+                  <span>Students</span>
+                </li>
+              </Link>
+            </>
+          )}
+          {userRole === "student" && (
+            <>
+              <Link to="/dashboard/instructor">
+                <li className="flex items-center space-x-2 p-3 mb-1  rounded-lg hover:bg-blue-700 cursor-pointer">
+                  <FiHome size={20} />
+                  <span>Dashboard</span>
+                </li>
+              </Link>
+              <Link to="/dashboard/courses">
+                <li className="flex items-center space-x-2 p-3  mb-1 rounded-lg hover:bg-blue-700 cursor-pointer">
+                  <FiBook size={20} />
+                  <span> My Courses</span>
+                </li>
+              </Link>
+            </>
+          )}
+
+          {userRole === "admin" && (
+            <>
+              <Link to="/dashboard/instructor">
+                <li className="flex items-center space-x-2 p-3 mb-1  rounded-lg hover:bg-blue-700 cursor-pointer">
+                  <MdSpaceDashboard size={20} />
+                  <span>Dashboard</span>
+                </li>
+              </Link>
+              <Link to="/dashboard/adminAllcourses">
+                <li className="flex items-center space-x-2 p-3  mb-1 rounded-lg hover:bg-blue-700 cursor-pointer">
+                  <FiBook size={20} />
+                  <span> All Courses</span>
+                </li>
+              </Link>
+              <Link to="/dashboard/students">
+                <li className="flex items-center space-x-2 p-3  mb-1 rounded-lg hover:bg-blue-700 cursor-pointer">
+                  <FaUserGraduate size={20} />
+                  <span>All Students</span>
+                </li>
+              </Link>
+              <Link to="/dashboard/instructors">
+                <li className="flex items-center space-x-2 p-3 mb-1 rounded-lg hover:bg-blue-700 cursor-pointer">
+                  <FaChalkboardTeacher size={20} />
+                  <span>All Instructors</span>
+                </li>
+              </Link>
+            </>
+          )}
+
           <Link to="/dashboard/profile">
             <li className="flex items-center space-x-2 p-3  rounded-lg hover:bg-blue-700 cursor-pointer">
               <FiUser size={20} />
