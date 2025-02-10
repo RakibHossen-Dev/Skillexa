@@ -33,7 +33,7 @@ const AllCourse = () => {
               onClick={toggleMenu}
             >
               <BiSort />
-              Sort
+              Sort By
             </button>
             {isOpen && (
               <div className="absolute right-0 mt-2 bg-white border rounded-sm shadow-lg ">
@@ -133,7 +133,7 @@ const AllCourse = () => {
                 >
                   <div className="flex items-center gap-5 shadow-md  border rounded-sm p-3 bg-white">
                     <img
-                      className="lg:h-[200px] lg:w-[590px] w-full"
+                      className="lg:h-[200px] lg:w-[300px] w-full"
                       src={allCourse.courseBanner}
                       alt=""
                     />

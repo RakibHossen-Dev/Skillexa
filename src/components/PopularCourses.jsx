@@ -20,15 +20,15 @@ const PopularCourses = () => {
         Popular <span className="text-blue-700">Courses</span>
       </h2>
 
-      <div className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-4">
+      <div className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-3">
         {popularCourses.map((popularCourse) => (
           <Link
             to={`/courseDetails/${popularCourse._id}`}
             key={popularCourse._id}
           >
-            <div className="shadow-md rounded-md">
+            <div className="shadow-md rounded-sm border p-2 h-[390px]">
               <img
-                className="rounded-t-md lg:h-[160px] w-full"
+                className="rounded-sm lg:h-[160px] w-full"
                 src={popularCourse.courseBanner}
                 alt=""
               />

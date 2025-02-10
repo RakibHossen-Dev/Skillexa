@@ -216,12 +216,12 @@ const Navbar = () => {
             <div>
               <IoNotificationsOutline className="text-blue-700 text-2xl cursor-pointer" />
             </div>
-            <div className="indicator cursor-pointer relative">
+            {/* <div className="indicator cursor-pointer relative">
               <GrCart className="text-2xl" />
               <span className="rounded-full absolute  px-2 py-1 top-0 left-2 text-white bg-blue-700 badge-md indicator-item">
                 1
-              </span>
-            </div>
+              </span> */}
+            {/* </div> */}
           </div>
 
           {/* Sign In/Sign Up */}

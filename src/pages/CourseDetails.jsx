@@ -1,7 +1,7 @@
 import useAxiosPublic from "@/hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
 import { LuBookCheck } from "react-icons/lu";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { MdOutlineDateRange } from "react-icons/md";
 import { GrLanguage } from "react-icons/gr";
@@ -20,7 +20,12 @@ import {
   AccordionItemButton,
   AccordionItemPanel,
 } from "react-accessible-accordion";
+import useAuth from "@/hooks/useAuth";
+import toast from "react-hot-toast";
+import { useContext } from "react";
+import { AuthContext } from "@/providers/Authprovider";
 const CourseDetails = () => {
+  const { user } = useContext(AuthContext);
   const { id } = useParams();
   const axiosPublic = useAxiosPublic();
   const { data: courses } = useQuery({
@@ -31,7 +36,36 @@ const CourseDetails = () => {
     },
   });
 
-  console.log(courses);
+  console.log(user.email);
+
+  const handleEnrollCourse = (courses) => {
+    const enrollCourseInfo = {
+      coursesId: courses._id,
+      courseTitle: courses.courseTitle,
+      courseBanner: courses.courseBanner,
+      date: courses.date,
+      category: courses.category,
+      language: courses.language,
+      difficulty: courses.difficulty,
+      price: courses.price,
+      skills: courses.skills,
+      enrollStudentEmail: user?.email,
+      instructorName: courses.instructorName,
+      instructorEmail: courses.instructorEmail,
+      instructorPhoto: courses.instructorPhoto,
+      lectures: courses.lectures,
+      description: courses.description,
+    };
+    console.log("enrollCourseInfo", enrollCourseInfo);
+    axiosPublic.post("/EnrollmentCourses", enrollCourseInfo).then((res) => {
+      console.log(res);
+      console.log(res.data.insertedId);
+      if (res.data.insertedId) {
+        toast.success("Course enrolled successfully! ✅");
+      }
+    });
+  };
+
   return (
     <div className="w-11/12 mx-auto mt-10 mb-20 ">
       <div className="flex justify-around items-center gap-5">
@@ -122,9 +156,15 @@ const CourseDetails = () => {
                     Enroll Now
                   </Button>
                 ) : (
-                  <Button className="w-full bg-blue-700 hover:bg-blue-900">
-                    Start Learning
-                  </Button>
+                  <Link to={`/dashboard/myCourse`}>
+                    <Button
+                      onClick={() => handleEnrollCourse(courses)}
+                      className="w-full bg-blue-700 hover:bg-blue-900"
+                    >
+                      {/* Start Learning */}
+                      Enroll Now
+                    </Button>
+                  </Link>
                 )}
               </div>
               <h3 className="text-lg font-semibold">What's in the courese</h3>

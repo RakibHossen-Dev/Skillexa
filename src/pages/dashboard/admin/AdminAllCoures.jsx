@@ -48,49 +48,53 @@ const AdminAllCoures = () => {
     });
   };
   return (
-    <div className="w-11/12 mx-auto my-10">
-      <div className="border w-full">
-        <Table>
-          {/* <TableCaption>A list of your recent invoices.</TableCaption> */}
-          <TableHeader>
-            <TableRow>
-              <TableHead className="w-[200px]">Course Title</TableHead>
-              <TableHead>Instructor Name</TableHead>
-              <TableHead>Category</TableHead>
-              <TableHead>Date</TableHead>
-              <TableHead className="text-right">Price</TableHead>
-              <TableHead className="text-right">Delete</TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            {adminAllCourses?.map((instructorCourss) => (
-              <TableRow key={instructorCourss._id}>
-                <TableCell className="font-medium capitalize">
-                  {instructorCourss?.courseTitle}
-                </TableCell>
-                <TableCell>{instructorCourss?.instructorName}</TableCell>
-                <TableCell>{instructorCourss?.category}</TableCell>
-                <TableCell>{instructorCourss?.date}</TableCell>
-                <TableCell className="text-right">
-                  {instructorCourss?.price ? (
-                    <>{instructorCourss?.price}$</>
-                  ) : (
-                    "Free"
-                  )}
-                </TableCell>
+    <div className="bg-gray-100 py-10">
+      <div className="w-11/12 mx-auto ">
+        <h3 className="text-2xl font-bold mb-4">All Courses</h3>
 
-                <TableCell className="text-right">
-                  <Button
-                    onClick={() => handleDeleteCourse(instructorCourss._id)}
-                    className="bg-red-200 text-red-600 hover:text-white hover:bg-red-900"
-                  >
-                    Delete
-                  </Button>
-                </TableCell>
+        <div className="border w-full">
+          <Table>
+            {/* <TableCaption>A list of your recent invoices.</TableCaption> */}
+            <TableHeader>
+              <TableRow>
+                <TableHead className="w-[200px]">Course Title</TableHead>
+                <TableHead>Instructor Name</TableHead>
+                <TableHead>Category</TableHead>
+                <TableHead>Date</TableHead>
+                <TableHead className="text-right">Price</TableHead>
+                <TableHead className="text-right">Delete</TableHead>
               </TableRow>
-            ))}
-          </TableBody>
-        </Table>
+            </TableHeader>
+            <TableBody>
+              {adminAllCourses?.map((instructorCourss) => (
+                <TableRow key={instructorCourss._id}>
+                  <TableCell className="font-medium capitalize">
+                    {instructorCourss?.courseTitle}
+                  </TableCell>
+                  <TableCell>{instructorCourss?.instructorName}</TableCell>
+                  <TableCell>{instructorCourss?.category}</TableCell>
+                  <TableCell>{instructorCourss?.date}</TableCell>
+                  <TableCell className="text-right">
+                    {instructorCourss?.price ? (
+                      <>{instructorCourss?.price}$</>
+                    ) : (
+                      "Free"
+                    )}
+                  </TableCell>
+
+                  <TableCell className="text-right">
+                    <Button
+                      onClick={() => handleDeleteCourse(instructorCourss._id)}
+                      className="bg-red-200 text-red-600 hover:text-white hover:bg-red-900"
+                    >
+                      Delete
+                    </Button>
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </div>
       </div>
     </div>
   );

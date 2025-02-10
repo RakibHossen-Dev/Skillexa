@@ -15,6 +15,8 @@ import AllCourse from "@/pages/AllCourse";
 import AdminAllCoures from "@/pages/dashboard/admin/AdminAllCoures";
 import AdminAllStudents from "@/pages/dashboard/admin/AdminAllStudents";
 import AdminAllInstructor from "@/pages/dashboard/admin/AdminAllInstructor";
+import MyCourse from "@/pages/dashboard/student/MyCourse";
+import VideoLessons from "@/pages/dashboard/student/VideoLessons";
 
 const router = createBrowserRouter([
   {
@@ -79,6 +81,14 @@ const router = createBrowserRouter([
       {
         path: "students",
         element: <Students></Students>,
+      },
+      {
+        path: "myCourse",
+        element: <MyCourse></MyCourse>,
+      },
+      {
+        path: "videoLessons",
+        element: <VideoLessons></VideoLessons>,
       },
       {
         path: "profile",

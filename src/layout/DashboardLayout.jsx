@@ -97,7 +97,7 @@ const DashboardLayout = () => {
                   <span>Dashboard</span>
                 </li>
               </Link>
-              <Link to="/dashboard/courses">
+              <Link to="/dashboard/myCourse">
                 <li className="flex items-center space-x-2 p-3  mb-1 rounded-lg hover:bg-blue-700 cursor-pointer">
                   <FiBook size={20} />
                   <span> My Courses</span>
@@ -164,13 +164,15 @@ const DashboardLayout = () => {
         <div>
           <div className="p-4 hidden md:flex justify-end items-end bg-white shadow-md">
             <h1 className="text-2xl font-semibold mr-3 mb-1.5">
-              {user?.displayName}
+              Hey, {user?.displayName}
             </h1>
-            <img
-              className="w-12  rounded-full border-2 border-blue-700  h-12"
-              src={user?.photoURL}
-              alt=""
-            />
+            <Link to="/dashboard/profile">
+              <img
+                className="w-12  rounded-full border-2 border-blue-700  h-12"
+                src={user?.photoURL}
+                alt=""
+              />
+            </Link>
           </div>
           <div className="md:hidden flex items-center justify-between  p-4 bg-white shadow-md">
             <button
@@ -179,11 +181,13 @@ const DashboardLayout = () => {
             >
               <FiMenu size={24} />
             </button>
-            <img
-              className="w-12  rounded-full border-2 border-blue-700  h-12"
-              src={user?.photoURL}
-              alt=""
-            />
+            <Link to="/dashboard/profile">
+              <img
+                className="w-12  rounded-full border-2 border-blue-700  h-12"
+                src={user?.photoURL}
+                alt=""
+              />
+            </Link>
           </div>
         </div>
         <Outlet></Outlet>
