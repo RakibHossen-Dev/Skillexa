@@ -1,7 +1,7 @@
 import useAxiosPublic from "@/hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
 import { LuBookCheck } from "react-icons/lu";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { MdOutlineDateRange } from "react-icons/md";
 import { GrLanguage } from "react-icons/gr";
@@ -36,8 +36,6 @@ const CourseDetails = () => {
     },
   });
 
-  console.log(user.email);
-
   const handleEnrollCourse = (courses) => {
     const enrollCourseInfo = {
       coursesId: courses._id,
@@ -66,6 +64,10 @@ const CourseDetails = () => {
     });
   };
 
+  const navigate = useNavigate();
+  const handleEnroll = () => {
+    navigate("/payment", { state: { courses } });
+  };
   return (
     <div className="w-11/12 mx-auto mt-10 mb-20 ">
       <div className="flex justify-around items-center gap-5">
@@ -96,18 +98,18 @@ const CourseDetails = () => {
             <p className="font-bold">{courses?.instructorName}</p>
           </div>
 
-          <div className="">
+          <div className="max-w-xl mx-auto my-6">
             <Accordion allowZeroExpanded>
               {courses?.lectures?.map((item) => (
-                <AccordionItem key={item._id}>
+                <AccordionItem key={item._id} className="mb-1  overflow-hidden">
                   <AccordionItemHeading>
-                    <AccordionItemButton>
+                    <AccordionItemButton className="w-full px-5 py-3 text-left text-gray-800 font-medium bg-gray-100 hover:bg-gray-200 transition-all">
                       {item.lectureTitle}
                     </AccordionItemButton>
                   </AccordionItemHeading>
-                  <AccordionItemPanel className="flex items-center gap-2 ml-8 py-3">
-                    <FaPlayCircle className="text-blue-700" />
-                    Video
+                  <AccordionItemPanel className="flex items-center gap-3 px-5 py-3 bg-white">
+                    <FaPlayCircle className="text-blue-600 text-lg" />
+                    <span className="text-gray-700 font-medium">Video</span>
                   </AccordionItemPanel>
                 </AccordionItem>
               ))}
@@ -152,10 +154,18 @@ const CourseDetails = () => {
               </div>
               <div>
                 {courses?.price ? (
-                  <Button className="w-full bg-blue-700 hover:bg-blue-900">
+                  <Button
+                    onClick={handleEnroll}
+                    className="w-full bg-blue-700 hover:bg-blue-900"
+                  >
                     Enroll Now
                   </Button>
                 ) : (
+                  // <Link to="/payment">
+                  //   <Button className="w-full bg-blue-700 hover:bg-blue-900">
+                  //     Enroll Now
+                  //   </Button>
+                  // </Link>
                   <Link to={`/dashboard/myCourse`}>
                     <Button
                       onClick={() => handleEnrollCourse(courses)}

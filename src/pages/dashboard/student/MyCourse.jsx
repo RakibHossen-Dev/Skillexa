@@ -4,6 +4,7 @@ import { AuthContext } from "@/providers/Authprovider";
 import { useQuery } from "@tanstack/react-query";
 import { useContext } from "react";
 import { LuBookCheck } from "react-icons/lu";
+import { Link } from "react-router-dom";
 import { FiBook } from "react-icons/fi";
 const MyCourse = () => {
   const { user } = useContext(AuthContext);
@@ -49,9 +50,11 @@ const MyCourse = () => {
                   </p>
                 </div>
                 <div>
-                  <Button className="w-full  bg-blue-700 hover:bg-blue-900">
-                    Start Learning
-                  </Button>
+                  <Link to={`/dashboard/videoLessons/${popularCourse._id}`}>
+                    <Button className="w-full  bg-blue-700 hover:bg-blue-900">
+                      Start Learning
+                    </Button>
+                  </Link>
                 </div>
               </div>
             </div>

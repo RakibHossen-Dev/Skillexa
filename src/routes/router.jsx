@@ -17,12 +17,18 @@ import AdminAllStudents from "@/pages/dashboard/admin/AdminAllStudents";
 import AdminAllInstructor from "@/pages/dashboard/admin/AdminAllInstructor";
 import MyCourse from "@/pages/dashboard/student/MyCourse";
 import VideoLessons from "@/pages/dashboard/student/VideoLessons";
+import Payments from "@/pages/Payments";
+import NotFound from "@/pages/NotFound";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout></MainLayout>,
     children: [
+      {
+        path: "*",
+        element: <NotFound></NotFound>,
+      },
       {
         path: "/",
         element: <Home></Home>,
@@ -34,6 +40,10 @@ const router = createBrowserRouter([
       {
         path: "/courseDetails/:id",
         element: <CourseDetails></CourseDetails>,
+      },
+      {
+        path: "/payment",
+        element: <Payments></Payments>,
       },
       {
         path: "/signin",
@@ -87,7 +97,7 @@ const router = createBrowserRouter([
         element: <MyCourse></MyCourse>,
       },
       {
-        path: "videoLessons",
+        path: "videoLessons/:id",
         element: <VideoLessons></VideoLessons>,
       },
       {

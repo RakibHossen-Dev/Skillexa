@@ -6,7 +6,11 @@ import banner3 from "../assets/banner3.png";
 
 import "swiper/css";
 import "swiper/css/pagination";
+import { useContext } from "react";
+import { AuthContext } from "@/providers/Authprovider";
 const Banner = () => {
+  const { user } = useContext(AuthContext);
+
   return (
     <div>
       <Swiper
@@ -38,9 +42,15 @@ const Banner = () => {
                 </p>
 
                 <div className="md:flex  justify-center items-center gap-3">
-                  <button className="py-2 md:w-auto w-full mt-5 px-4 bg-blue-700 rounded-md hover:bg-blue-900  ease-linear duration-200">
-                    Create your free account
-                  </button>
+                  {user ? (
+                    <button className="py-2 mt-5 px-4 w-full md:w-60 bg-blue-700 rounded-md hover:border-blue-900  hover:bg-blue-900  border border-blue-700 ease-linear duration-200">
+                      My Courses
+                    </button>
+                  ) : (
+                    <button className="py-2 md:w-auto w-full mt-5 px-4 bg-blue-700 rounded-md hover:bg-blue-900  ease-linear duration-200">
+                      Create your free account
+                    </button>
+                  )}
                   <button className="py-2 mt-5 px-4 w-full md:w-60 rounded-md hover:border-blue-900  hover:bg-blue-900  border border-blue-700 ease-linear duration-200">
                     View Courses
                   </button>
@@ -68,9 +78,15 @@ const Banner = () => {
                   with Skillexa.
                 </p>
                 <div className="md:flex justify-center items-center gap-3">
-                  <button className="py-2 md:w-auto w-full mt-5 px-4 bg-blue-700 rounded-md  hover:bg-blue-900  ease-linear duration-200">
-                    Create your free account
-                  </button>
+                  {user ? (
+                    <button className="py-2 mt-5 px-4 w-full md:w-60 bg-blue-700 rounded-md hover:border-blue-900  hover:bg-blue-900  border border-blue-700 ease-linear duration-200">
+                      My Courses
+                    </button>
+                  ) : (
+                    <button className="py-2 md:w-auto w-full mt-5 px-4 bg-blue-700 rounded-md hover:bg-blue-900  ease-linear duration-200">
+                      Create your free account
+                    </button>
+                  )}
                   <button className="py-2 mt-5 px-4 w-full md:w-60 rounded-md hover:border-blue-900  hover:bg-blue-900  border border-blue-700 ease-linear duration-200">
                     View Courses
                   </button>
@@ -97,9 +113,15 @@ const Banner = () => {
                   gain new skills, and achieve success with Skillexa!
                 </p>
                 <div className="md:flex  justify-center items-center gap-3">
-                  <button className="py-2 md:w-auto w-full mt-5 px-4 bg-blue-700 rounded-md hover:bg-blue-900  ease-linear duration-200">
-                    Create your free account
-                  </button>
+                  {user ? (
+                    <button className="py-2 mt-5 px-4 w-full md:w-60 bg-blue-700 rounded-md hover:border-blue-900  hover:bg-blue-900  border border-blue-700 ease-linear duration-200">
+                      My Courses
+                    </button>
+                  ) : (
+                    <button className="py-2 md:w-auto w-full mt-5 px-4 bg-blue-700 rounded-md hover:bg-blue-900  ease-linear duration-200">
+                      Create your free account
+                    </button>
+                  )}
                   <button className="py-2 mt-5 px-4 w-full md:w-60 rounded-md hover:border-blue-900  hover:bg-blue-900  border border-blue-700 ease-linear duration-200">
                     View Courses
                   </button>

@@ -1,5 +1,3 @@
-import { Button } from "@/components/ui/button";
-
 const Dashboard = () => {
   return (
     <div>
@@ -18,7 +16,6 @@ const Dashboard = () => {
           <p className="text-3xl font-bold text-blue-600 mt-2">22</p>
         </div>
       </div>
-      <Button>Click me</Button>
     </div>
   );
 };

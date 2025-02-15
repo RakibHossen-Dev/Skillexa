@@ -215,13 +215,16 @@ const Navbar = () => {
           <div className="relative flex items-center gap-3">
             <div>
               <IoNotificationsOutline className="text-blue-700 text-2xl cursor-pointer" />
+              <span className="rounded-full absolute text-sm px-1.5 cursor-pointer -top-2 left-2.5 text-white bg-red-500 ">
+                1
+              </span>
             </div>
             {/* <div className="indicator cursor-pointer relative">
               <GrCart className="text-2xl" />
               <span className="rounded-full absolute  px-2 py-1 top-0 left-2 text-white bg-blue-700 badge-md indicator-item">
                 1
-              </span> */}
-            {/* </div> */}
+              </span>
+            </div> */}
           </div>
 
           {/* Sign In/Sign Up */}
@@ -259,11 +262,18 @@ const Navbar = () => {
 
           {/* Cart */}
           <div className="relative">
-            <div className="indicator cursor-pointer relative">
+            {/* <div className="indicator cursor-pointer relative">
               <GrCart className="text-2xl" />
               <span className="rounded-full absolute  px-2 -top-3 left-3 text-white bg-blue-700 badge-md indicator-item">
                 1
+              </span> */}
+            <div>
+              <IoNotificationsOutline className="text-blue-700 text-2xl cursor-pointer" />
+              <span className="rounded-full absolute text-[12px] px-1.5 cursor-pointer -top-2 left-2.5 text-white bg-red-500 ">
+                1
               </span>
+
+              {/* </div> */}
             </div>
           </div>
 

@@ -38,7 +38,7 @@ const DashboardLayout = () => {
     toast.success("Logout Successful");
   };
   return (
-    <div className="flex h-screen font-quicksand">
+    <div className="flex h-screen font-quicksand ">
       {/* Sidebar */}
       <div
         className={`fixed inset-y-0 left-0 bg-blue-800 text-white z-50 w-64 p-4 transform ${
@@ -93,7 +93,7 @@ const DashboardLayout = () => {
             <>
               <Link to="/dashboard/instructor">
                 <li className="flex items-center space-x-2 p-3 mb-1  rounded-lg hover:bg-blue-700 cursor-pointer">
-                  <FiHome size={20} />
+                  <MdSpaceDashboard size={20} />
                   <span>Dashboard</span>
                 </li>
               </Link>

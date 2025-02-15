@@ -6,7 +6,7 @@ const MainLayout = () => {
   return (
     <div className="font-quicksand">
       <Navber></Navber>
-      <div className="min-h-[500px]">
+      <div className="min-h-[500px] max-w-[1500px] mx-auto">
         <Outlet></Outlet>
       </div>
       <Footer></Footer>
