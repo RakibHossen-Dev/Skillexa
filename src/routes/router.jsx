@@ -22,6 +22,7 @@ import NotFound from "@/pages/NotFound";
 import StudentDashboard from "@/pages/dashboard/student/StudentDashboard";
 import AdminDashboard from "@/pages/dashboard/admin/AdminDashboard";
 import BrowseCourses from "@/pages/BrowseCourses";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -50,7 +51,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/payment",
-        element: <Payments></Payments>,
+        element: (
+          <PrivateRoute>
+            <Payments></Payments>,
+          </PrivateRoute>
+        ),
       },
       {
         path: "/signin",
@@ -68,7 +73,11 @@ const router = createBrowserRouter([
   },
   {
     path: "/dashboard",
-    element: <DashboardLayout></DashboardLayout>,
+    element: (
+      <PrivateRoute>
+        <DashboardLayout></DashboardLayout>,
+      </PrivateRoute>
+    ),
     children: [
       {
         path: "instructor",

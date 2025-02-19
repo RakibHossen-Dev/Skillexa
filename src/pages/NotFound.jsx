@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import notFound from "../assets/notFound.png";
+import notFound from "/notfound.png";
 import { Link } from "react-router-dom";
 
 const NotFound = () => {
