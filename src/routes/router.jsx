@@ -21,6 +21,7 @@ import Payments from "@/pages/Payments";
 import NotFound from "@/pages/NotFound";
 import StudentDashboard from "@/pages/dashboard/student/StudentDashboard";
 import AdminDashboard from "@/pages/dashboard/admin/AdminDashboard";
+import BrowseCourses from "@/pages/BrowseCourses";
 
 const router = createBrowserRouter([
   {
@@ -42,6 +43,10 @@ const router = createBrowserRouter([
       {
         path: "/courseDetails/:id",
         element: <CourseDetails></CourseDetails>,
+      },
+      {
+        path: "/browseCourses/:category",
+        element: <BrowseCourses></BrowseCourses>,
       },
       {
         path: "/payment",

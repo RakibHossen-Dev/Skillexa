@@ -30,9 +30,6 @@ const Navbar = () => {
 
   const [userRole] = useUserRole();
 
-  // console.log(userRole);
-
-  // Close sidebar on larger screen sizes
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth >= 1024) {
@@ -49,6 +46,17 @@ const Navbar = () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
+
+  const categories = [
+    { name: "Technology", image: technology },
+    { name: "Content Creation", image: contentCreation },
+    { name: "Online Business", image: business },
+    { name: "Coaching", image: coaching },
+    { name: "Language Learning", image: languageLearning },
+    { name: "Teaching", image: teaching },
+    { name: "Passive Income", image: passiveIcome },
+    { name: "Photography", image: photoGraphy },
+  ];
 
   return (
     <div className="shadow-sm border-b ">
@@ -70,119 +78,22 @@ const Navbar = () => {
                 <IoIosArrowDown className="text-blue-700" />
               </button>
               {isOpen && (
-                <div className="absolute left-0 mt-6 bg-white border rounded-sm shadow-lg p-2 w-[550px]">
+                <div className="absolute left-0 mt-6 bg-white border rounded-md shadow-lg p-3 w-[550px]">
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
-                    {/* Category 1 */}
-                    <div className="flex flex-col justify-center items-center gap-2 border rounded-sm p-2 shadow-md hover:shadow-lg transition-shadow duration-300 ease-in-out">
-                      <img
-                        className="h-[80px] object-cover "
-                        src={technology}
-                        alt="Technology"
-                      />
-                      <div className="">
-                        <h3 className="text-blue-700  font-semibold mb-2">
-                          Technology
-                        </h3>
-                      </div>
-                    </div>
-
-                    {/* Category 2 */}
-                    <div className="flex flex-col  justify-center items-center gap-2 border rounded-sm p-2 shadow-md hover:shadow-lg transition-shadow duration-300 ease-in-out">
-                      <img
-                        className=" h-[80px] object-cover "
-                        src={contentCreation}
-                        alt="Content Creation"
-                      />
-                      <div className="">
-                        <h3 className="text-blue-700  font-semibold mb-2">
-                          Content Creation
-                        </h3>
-                      </div>
-                    </div>
-
-                    {/* Category 3 */}
-                    <div className="flex  flex-col  justify-center items-center gap-2 border rounded-sm p-2 shadow-md hover:shadow-lg transition-shadow duration-300 ease-in-out">
-                      <img
-                        className="h-[80px] object-cover "
-                        src={business}
-                        alt="Online Business"
-                      />
-                      <div className="">
-                        <h3 className="text-blue-700  font-semibold mb-2">
-                          Online Business
-                        </h3>
-                      </div>
-                    </div>
-
-                    {/* Category 4 */}
-                    <div className="flex  flex-col  justify-center items-center gap-2 border rounded-sm p-2 shadow-md hover:shadow-lg transition-shadow duration-300 ease-in-out">
-                      <img
-                        className="h-[80px] object-cover"
-                        src={coaching}
-                        alt="Coaching"
-                      />
-                      <div className="">
-                        <h3 className="text-blue-700  font-semibold mb-2">
-                          Coaching
-                        </h3>
-                      </div>
-                    </div>
-
-                    {/* Category 5 */}
-                    <div className="flex  flex-col  justify-center items-center gap-2 border rounded-sm p-2 shadow-md hover:shadow-lg transition-shadow duration-300 ease-in-out">
-                      <img
-                        className=" h-[80px] object-cover "
-                        src={languageLearning}
-                        alt="Language Learning"
-                      />
-                      <div className="">
-                        <h3 className="text-blue-700  font-semibold mb-2">
-                          Language Learning
-                        </h3>
-                      </div>
-                    </div>
-
-                    {/* Category 6 */}
-                    <div className="flex  flex-col  justify-center items-center gap-2 border rounded-sm p-2 shadow-md hover:shadow-lg transition-shadow duration-300 ease-in-out">
-                      <img
-                        className=" h-[80px] object-cover "
-                        src={teaching}
-                        alt="Teaching"
-                      />
-                      <div className="">
-                        <h3 className="text-blue-700  font-semibold mb-2">
-                          Teaching
-                        </h3>
-                      </div>
-                    </div>
-
-                    {/* Category 7 */}
-                    <div className="flex  flex-col  justify-center items-center gap-2 border rounded-sm p-2 shadow-md hover:shadow-lg transition-shadow duration-300 ease-in-out">
-                      <img
-                        className=" h-[80px] object-cover "
-                        src={passiveIcome}
-                        alt="Passive Income"
-                      />
-                      <div className="">
-                        <h3 className="text-blue-700 font-semibold  mb-2">
-                          Passive Income
-                        </h3>
-                      </div>
-                    </div>
-
-                    {/* Category 8 */}
-                    <div className="flex  flex-col  justify-center items-center gap-2 border rounded-sm p-2 shadow-md hover:shadow-lg transition-shadow duration-300 ease-in-out">
-                      <img
-                        className=" h-[80px] object-cover "
-                        src={photoGraphy}
-                        alt="Photography"
-                      />
-                      <div className="">
-                        <h3 className="text-blue-700 font-semibold mb-2">
-                          Photography
-                        </h3>
-                      </div>
-                    </div>
+                    {categories.map((category, index) => (
+                      <Link to={`/browseCourses/${category.name}`} key={index}>
+                        <div className="flex flex-col justify-center items-center gap-2 border rounded-md p-2 shadow-md hover:shadow-xl transition-all duration-300">
+                          <img
+                            className="h-[80px] object-cover"
+                            src={category.image}
+                            alt={category.name}
+                          />
+                          <h3 className="text-blue-700 font-semibold">
+                            {category.name}
+                          </h3>
+                        </div>
+                      </Link>
+                    ))}
                   </div>
                 </div>
               )}
@@ -219,12 +130,6 @@ const Navbar = () => {
                 1
               </span>
             </div>
-            {/* <div className="indicator cursor-pointer relative">
-              <GrCart className="text-2xl" />
-              <span className="rounded-full absolute  px-2 py-1 top-0 left-2 text-white bg-blue-700 badge-md indicator-item">
-                1
-              </span>
-            </div> */}
           </div>
 
           {/* Sign In/Sign Up */}
@@ -282,18 +187,11 @@ const Navbar = () => {
 
           {/* Cart */}
           <div className="relative">
-            {/* <div className="indicator cursor-pointer relative">
-              <GrCart className="text-2xl" />
-              <span className="rounded-full absolute  px-2 -top-3 left-3 text-white bg-blue-700 badge-md indicator-item">
-                1
-              </span> */}
             <div>
               <IoNotificationsOutline className="text-blue-700 text-2xl cursor-pointer" />
               <span className="rounded-full absolute text-[12px] px-1.5 cursor-pointer -top-2 left-2.5 text-white bg-red-500 ">
                 1
               </span>
-
-              {/* </div> */}
             </div>
           </div>
 
@@ -378,24 +276,6 @@ const Navbar = () => {
                 </li>
               </>
             )}
-            {/* 
-            <li>
-              <Link
-                to="/signin"
-                className="text-blue-700 border border-blue-700 py-2 px-4 block text-center"
-              >
-                Sign in
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/signup"
-                className="text-white bg-blue-700 py-2 px-4 block text-center"
-              >
-                Sign up
-              </Link>
-            </li>
-             */}
           </ul>
           <button
             className="absolute top-4 right-4 text-3xl text-blue-700"
