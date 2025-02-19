@@ -91,7 +91,7 @@ const DashboardLayout = () => {
           )}
           {userRole === "student" && (
             <>
-              <Link to="/dashboard/instructor">
+              <Link to="/dashboard/studentDashboard">
                 <li className="flex items-center space-x-2 p-3 mb-1  rounded-lg hover:bg-blue-700 cursor-pointer">
                   <MdSpaceDashboard size={20} />
                   <span>Dashboard</span>
@@ -108,7 +108,7 @@ const DashboardLayout = () => {
 
           {userRole === "admin" && (
             <>
-              <Link to="/dashboard/instructor">
+              <Link to="/dashboard/admintDashboard">
                 <li className="flex items-center space-x-2 p-3 mb-1  rounded-lg hover:bg-blue-700 cursor-pointer">
                   <MdSpaceDashboard size={20} />
                   <span>Dashboard</span>

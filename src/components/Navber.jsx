@@ -229,12 +229,32 @@ const Navbar = () => {
 
           {/* Sign In/Sign Up */}
           {user ? (
-            <Link to="/dashboard/instructor">
-              <button className="border my-3 py-2 px-6 border-blue-600 bg-blue-600 text-white  flex items-center justify-center rounded-lg hover:bg-blue-700 transition">
-                <LuLayoutDashboard className="text-xl mr-2" />
-                <span className="font-medium">Dashboard</span>
-              </button>
-            </Link>
+            <>
+              {userRole === "instructor" && (
+                <Link to="/dashboard/instructor">
+                  <button className="border my-3 py-2 px-6 border-blue-600 bg-blue-600 text-white  flex items-center justify-center rounded-lg hover:bg-blue-700 transition">
+                    <LuLayoutDashboard className="text-xl mr-2" />
+                    <span className="font-medium">Dashboard</span>
+                  </button>
+                </Link>
+              )}
+              {userRole === "student" && (
+                <Link to="/dashboard/studentDashboard">
+                  <button className="border my-3 py-2 px-6 border-blue-600 bg-blue-600 text-white  flex items-center justify-center rounded-lg hover:bg-blue-700 transition">
+                    <LuLayoutDashboard className="text-xl mr-2" />
+                    <span className="font-medium">Dashboard</span>
+                  </button>
+                </Link>
+              )}
+              {userRole === "admin" && (
+                <Link to="/dashboard/admintDashboard">
+                  <button className="border my-3 py-2 px-6 border-blue-600 bg-blue-600 text-white  flex items-center justify-center rounded-lg hover:bg-blue-700 transition">
+                    <LuLayoutDashboard className="text-xl mr-2" />
+                    <span className="font-medium">Dashboard</span>
+                  </button>
+                </Link>
+              )}
+            </>
           ) : (
             <>
               <Link
@@ -312,12 +332,32 @@ const Navbar = () => {
             </li>
 
             {user ? (
-              <Link to="/dashboard/instructor">
-                <button className="border my-3 py-2 px-6 border-blue-600 w-full bg-blue-600 text-white  flex items-center justify-center rounded-lg hover:bg-blue-700 transition">
-                  <LuLayoutDashboard className="text-xl mr-2" />
-                  <span className="font-medium">Dashboard</span>
-                </button>
-              </Link>
+              <>
+                {userRole === "instructor" && (
+                  <Link to="/dashboard/instructor">
+                    <button className="border my-3 py-2 px-6 border-blue-600 w-full bg-blue-600 text-white  flex items-center justify-center rounded-lg hover:bg-blue-700 transition">
+                      <LuLayoutDashboard className="text-xl mr-2" />
+                      <span className="font-medium">Dashboard</span>
+                    </button>
+                  </Link>
+                )}
+                {userRole === "student" && (
+                  <Link to="/dashboard/studentDashboard">
+                    <button className="border my-3 py-2 px-6 border-blue-600  w-full bg-blue-600 text-white  flex items-center justify-center rounded-lg hover:bg-blue-700 transition">
+                      <LuLayoutDashboard className="text-xl mr-2" />
+                      <span className="font-medium">Dashboard</span>
+                    </button>
+                  </Link>
+                )}
+                {userRole === "admin" && (
+                  <Link to="/dashboard/admintDashboard">
+                    <button className="border my-3 py-2 px-6 border-blue-600  w-full bg-blue-600 text-white  flex items-center justify-center rounded-lg hover:bg-blue-700 transition">
+                      <LuLayoutDashboard className="text-xl mr-2" />
+                      <span className="font-medium">Dashboard</span>
+                    </button>
+                  </Link>
+                )}
+              </>
             ) : (
               <>
                 <li>

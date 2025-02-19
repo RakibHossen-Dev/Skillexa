@@ -6,8 +6,20 @@ import languageLearning from "../assets/categoryImages/languageLearning.png";
 import teaching from "../assets/categoryImages/teaching.png";
 import passiveIcome from "../assets/categoryImages/passive-income.png";
 import photoGraphy from "../assets/categoryImages/photography.png";
+import useAxiosPublic from "@/hooks/useAxiosPublic";
+import { useQuery } from "@tanstack/react-query";
 
 const PopularCategories = () => {
+  const axiosPublic = useAxiosPublic();
+  const { data: allCourses = [] } = useQuery({
+    queryKey: ["allCourse"],
+    queryFn: async () => {
+      const res = await axiosPublic.get("/allCourses");
+      return res.data;
+    },
+  });
+
+  console.log(allCourses);
   return (
     <div className="w-11/12 mx-auto my-20">
       <h2 className="text-center text-3xl font-bold text-black mb-8">

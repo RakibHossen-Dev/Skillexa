@@ -26,7 +26,7 @@ const PopularCourses = () => {
             to={`/courseDetails/${popularCourse._id}`}
             key={popularCourse._id}
           >
-            <div className="shadow-md rounded-sm border p-2 h-[390px]">
+            <div className="shadow-md rounded-sm border p-2 md:h-[390px]">
               <img
                 className="rounded-sm lg:h-[160px] w-full"
                 src={popularCourse.courseBanner}

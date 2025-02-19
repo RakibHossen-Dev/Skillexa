@@ -27,6 +27,7 @@ import { AuthContext } from "@/providers/Authprovider";
 const CourseDetails = () => {
   const { user } = useContext(AuthContext);
   const { id } = useParams();
+  // const navigate = useNavigate();
   const axiosPublic = useAxiosPublic();
   const { data: courses } = useQuery({
     queryKey: ["course", id],
@@ -55,13 +56,37 @@ const CourseDetails = () => {
       description: courses.description,
     };
     console.log("enrollCourseInfo", enrollCourseInfo);
-    axiosPublic.post("/EnrollmentCourses", enrollCourseInfo).then((res) => {
-      console.log(res);
-      console.log(res.data.insertedId);
-      if (res.data.insertedId) {
-        toast.success("Course enrolled successfully! ✅");
-      }
-    });
+    // axiosPublic
+    //   .post("/EnrollmentCourses", enrollCourseInfo)
+    //   .then((res) => {
+    //     console.log(res);
+    //     console.log(res.data.insertedId);
+    //     if (res.data.insertedId) {
+    //       toast.success("Course enrolled successfully! ✅");
+    //       navigate("`/dashboard/myCourse");
+    //     }
+    //   })
+    //   .catch((error) => {
+    //     console.error(error);
+    //   });
+    axiosPublic
+      .post("/EnrollmentCourses", enrollCourseInfo)
+      .then((res) => {
+        console.log(res);
+        console.log(res.data.insertedId);
+        if (res.data.insertedId) {
+          toast.success("Course enrolled successfully! ✅");
+          navigate("/dashboard/myCourse");
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+        if (error.response) {
+          toast.error(` ${error.response.data}`);
+        } else {
+          toast.error("Something went wrong. Please try again later.");
+        }
+      });
   };
 
   const navigate = useNavigate();
@@ -70,12 +95,12 @@ const CourseDetails = () => {
   };
   return (
     <div className="w-11/12 mx-auto mt-10 mb-20 ">
-      <div className="flex justify-around items-center gap-5">
-        <div className="lg:w-1/2 space-y-4">
+      <div className="flex lg:flex-row flex-col justify-around items-center gap-8 lg:gap-5">
+        <div className="lg:w-1/2 space-y-4  lg:order-1 order-2">
           <h3 className="text-2xl font-bold capitalize">
             {courses?.courseTitle}
           </h3>
-          <div className="flex items-center gap-4">
+          <div className="flex lg:flex-row flex-col lg:items-center gap-4">
             <p className="flex items-center gap-2">
               Category : {courses?.category}
             </p>
@@ -118,7 +143,7 @@ const CourseDetails = () => {
           <p className="font-bold">Learn This Skills</p>
           <p>
             {courses?.skills.map((skill) => (
-              <button className="cursor-default bg-blue-200 text-blue-500 mx-3 px-3 py-1 rounded-lg">
+              <button className="cursor-default my-3 lg:my-0 bg-blue-200 text-blue-500 mx-3 px-3 py-1 rounded-lg">
                 {skill}
               </button>
             ))}
@@ -134,8 +159,8 @@ const CourseDetails = () => {
             </AccordionItem>
           </Accordion> */}
         </div>
-        <div className="">
-          <div className="shadow-lg max-w-[360px]  ">
+        <div className="lg:order-2 order-1">
+          <div className="shadow-lg max-w-[300px]  ">
             <img
               className="w-full lg:h-[200px]"
               src={courses?.courseBanner}
@@ -166,15 +191,15 @@ const CourseDetails = () => {
                   //     Enroll Now
                   //   </Button>
                   // </Link>
-                  <Link to={`/dashboard/myCourse`}>
-                    <Button
-                      onClick={() => handleEnrollCourse(courses)}
-                      className="w-full bg-blue-700 hover:bg-blue-900"
-                    >
-                      {/* Start Learning */}
-                      Enroll Now
-                    </Button>
-                  </Link>
+                  // <Link to={`/dashboard/myCourse`}>
+                  <Button
+                    onClick={() => handleEnrollCourse(courses)}
+                    className="w-full bg-blue-700 hover:bg-blue-900"
+                  >
+                    {/* Start Learning */}
+                    Enroll Now
+                  </Button>
+                  // </Link>
                 )}
               </div>
               <h3 className="text-lg font-semibold">What's in the courese</h3>

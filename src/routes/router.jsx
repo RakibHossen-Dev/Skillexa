@@ -19,6 +19,8 @@ import MyCourse from "@/pages/dashboard/student/MyCourse";
 import VideoLessons from "@/pages/dashboard/student/VideoLessons";
 import Payments from "@/pages/Payments";
 import NotFound from "@/pages/NotFound";
+import StudentDashboard from "@/pages/dashboard/student/StudentDashboard";
+import AdminDashboard from "@/pages/dashboard/admin/AdminDashboard";
 
 const router = createBrowserRouter([
   {
@@ -66,6 +68,14 @@ const router = createBrowserRouter([
       {
         path: "instructor",
         element: <Dashboard></Dashboard>,
+      },
+      {
+        path: "studentDashboard",
+        element: <StudentDashboard></StudentDashboard>,
+      },
+      {
+        path: "admintDashboard",
+        element: <AdminDashboard></AdminDashboard>,
       },
       {
         path: "addCourse",
