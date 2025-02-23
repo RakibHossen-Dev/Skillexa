@@ -126,15 +126,18 @@ const Dashboard = () => {
         </div>
         <div className="lg:w-1/2 relative p-6 rounded-3xl shadow-[0_0_25px_rgba(255,255,255,0.2)] border border-white/20 bg-white/10 backdrop-blur-xl">
   {/* Glow Effect */}
+  <div className="relative p-6 rounded-3xl shadow-[0_0_25px_rgba(255,255,255,0.2)] border border-white/20 bg-white/10 backdrop-blur-xl">
+  {/* Glow Effect */}
   <div className="absolute inset-0 bg-gradient-radial from-blue-500/30 to-transparent opacity-50 blur-2xl rounded-3xl"></div>
 
   <Calendar
     onChange={onChange}
     value={value}
-    className="text-black text-lg font-semibold rounded-xl bg-gradient-to-r from-blue-300 to-blue-500  font-bold rounded-lg  scale-110 transition-all duration-300 w-24"
-   
+    className="text-black text-lg font-semibold rounded-xl bg-gradient-to-r from-indigo-400 to-blue-600 font-bold scale-105 transition-transform duration-300 w-48 p-4 shadow-lg ring-2 ring-indigo-600 hover:ring-indigo-800 hover:scale-110"
   />
 </div>
+</div>
+
 </div>
     </div>
   );
