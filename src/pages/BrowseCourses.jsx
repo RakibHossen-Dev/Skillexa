@@ -19,7 +19,7 @@ const BrowseCourses = () => {
     },
   });
 
-  console.log(categoryCourse);
+  // console.log(categoryCourse);
   return (
     <div className="pb-10">
       <div className="relative h-[200px] lg:h-[250px] flex items-center justify-center bg-blue-600 shadow-lg">

@@ -15,7 +15,7 @@ const Blogs = () => {
     },
   });
 
-  console.log(blogs);
+  // console.log(blogs);
   return (
     <div className="w-11/12 mx-auto my-20">
       <h2 className="text-center text-3xl font-bold text-black mb-8">

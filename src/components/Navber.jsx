@@ -19,6 +19,8 @@ import teaching from "../assets/categoryImages/teaching.png";
 import passiveIcome from "../assets/categoryImages/passive-income.png";
 import photoGraphy from "../assets/categoryImages/photography.png";
 import useUserRole from "@/hooks/useUserRole";
+import useAxiosPublic from "@/hooks/useAxiosPublic";
+import { useQuery } from "@tanstack/react-query";
 // Hello
 const Navbar = () => {
   const { user } = useAuth();
@@ -58,6 +60,63 @@ const Navbar = () => {
     { name: "Photography", image: photoGraphy },
   ];
 
+  // const [searchTerm, setSearchTerm] = useState("");
+  // const [filteredCourses, setFilteredCourses] = useState([]);
+  // const axiosPublic = useAxiosPublic();
+  // const { data: courses = [] } = useQuery({
+  //   queryKey: ["allCourse"],
+  //   queryFn: async () => {
+  //     const res = await axiosPublic.get("/allCourses");
+  //     return res.data;
+  //   },
+  // });
+
+  // const handleSearch = (e) => {
+  //   const term = e.target.value;
+  //   setSearchTerm(term);
+  //   if (term.trim() === "") {
+  //     setFilteredCourses([]);
+  //   } else {
+  //     const results = courses?.filter((course) =>
+  //       course?.title?.toLowerCase().includes(term.toLowerCase())
+  //     );
+  //     setFilteredCourses(results);
+  //   }
+  // };
+  const [searchTerm, setSearchTerm] = useState("");
+  const [filteredCourses, setFilteredCourses] = useState([]);
+  const axiosPublic = useAxiosPublic();
+  const { data: courses = [], isLoading } = useQuery({
+    queryKey: ["allCourse"],
+    queryFn: async () => {
+      const res = await axiosPublic.get("/allCourses");
+      return res.data;
+    },
+  });
+
+  // Update filteredCourses when courses change
+  useEffect(() => {
+    setFilteredCourses(courses);
+  }, [courses]);
+
+  // Search function
+  const handleSearch = (e) => {
+    const term = e.target.value;
+    setSearchTerm(term);
+    console.log(term);
+    if (!term.trim()) {
+      setFilteredCourses(courses);
+    } else {
+      const results = courses?.length
+        ? courses.filter((course) =>
+            course?.courseTitle?.toLowerCase().includes(term.toLowerCase())
+          )
+        : [];
+      setFilteredCourses(results);
+    }
+  };
+
+  console.log("NavberCourese", filteredCourses);
   return (
     <div className="shadow-sm border-b ">
       <nav className="w-11/12 mx-auto  flex gap-4 justify-between items-center py-2 relative">
@@ -102,20 +161,40 @@ const Navbar = () => {
 
           {/* Search Bar */}
           <div className="hidden lg:block">
-            <div className="border rounded-lg border-blue-700 py-1 flex items-center px-2">
+            <div className="border rounded-lg border-blue-700 py-1 flex items-center px-3 relative shadow-lg bg-white">
               <input
-                className="focus:outline-none w-96"
+                className="focus:outline-none w-96 px-2 py-1 text-gray-700 rounded-lg"
                 type="search"
-                placeholder="Search Any Course"
+                placeholder="Search Any Course..."
+                value={searchTerm}
+                onChange={handleSearch}
                 style={{
                   WebkitAppearance: "none",
                   MozAppearance: "none",
                   appearance: "none",
                 }}
               />
-              <button className="bg-blue-700 p-2">
-                <CiSearch className="text-white" />
+              <button className="bg-blue-700 hover:bg-blue-800 transition-all p-2 rounded-lg ml-2">
+                <CiSearch className="text-white text-xl" />
               </button>
+              {searchTerm && filteredCourses.length > 0 && (
+                <div className="absolute left-0 top-full mt-6 w-full z-50 bg-white text-black rounded-sm shadow-xl max-h-60 overflow-auto border border-gray-200">
+                  {filteredCourses.map((course) => (
+                    <Link
+                      to={`/courseDetails/${course._id}`}
+                      key={course._id}
+                      className="flex justify-between items-center p-3 hover:bg-gray-100 transition-all border-b"
+                    >
+                      <span className="font-medium text-gray-800">
+                        {course.courseTitle}
+                      </span>
+                      <span className="text-blue-600 hover:text-blue-800 transition-all">
+                        View
+                      </span>
+                    </Link>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
         </div>
