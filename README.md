@@ -1,8 +1,49 @@
-# React + Vite
+# Skillexa - Online Learning Platform
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Live link : https://skillexa-org.vercel.app
 
-Currently, two official plugins are available:
+Skillexa is a modern online learning platform inspired by Coursera and Udemy. It provides a seamless learning experience with role-based access for students, instructors, and administrators. Users can browse, buy, manage, and track courses through an intuitive dashboard.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
+
+### 🚀 General Features
+
+- **Course Browsing** – Explore courses across different categories.
+- **Responsive Design** – Works on all devices (desktop, tablet, and mobile).
+- **Search & Filtering** – Find courses using keywords, categories, and pricing.
+- **Secure Authentication** – Login and manage your account securely.
+- **Profile Management** – Update personal information and settings.
+
+### 🎓 Student Features
+
+- **Course Enrollment** – Buy courses securely using Stripe payment gateway.
+- **Student Dashboard** – View enrolled courses, progress, and purchase history.
+- **Instructor Courses** – See all courses created by a specific instructor.
+
+### 🧑‍🏫 Instructor Features
+
+- **Course Management** – Add, update, or delete courses.
+- **Dashboard** – Track courses, student enrollments, and earnings.
+- **Student List** – View students who have purchased their courses.
+
+### 🛠️ Admin Features
+
+- **Course Management** - remove any course.
+- **User Management** – Manage students and instructors.
+- **Admin Dashboard** – Get insights into platform performance.
+
+## Tech Stack
+
+- **Frontend:** React, Tailwind CSS
+- **Backend:** Node.js, Express.js
+- **Database:** MongoDB
+- **Authentication:** Firebase Authentication
+- **Payment Processing:** Stripe
+- **Libraries:** React Router, Axios, React Query
+
+## Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/your-username/skillexa.git
+   ```
