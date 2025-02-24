@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import useAxiosPublic from "@/hooks/useAxiosPublic";
+import useAxiosSecure from "@/hooks/useAxiosSecure";
 import { AuthContext } from "@/providers/Authprovider";
 import { useQuery } from "@tanstack/react-query";
 import { useContext } from "react";
@@ -9,15 +10,16 @@ import { FiBook } from "react-icons/fi";
 const MyCourse = () => {
   const { user } = useContext(AuthContext);
   const axiosPublic = useAxiosPublic();
+  const axiosSecure = useAxiosSecure();
   const { data: myEnrollCourse, refetch } = useQuery({
     queryKey: ["myEnrollCourse", user?.email],
     queryFn: async () => {
-      const res = await axiosPublic.get(`/myEnrollCourse/${user?.email}`);
+      const res = await axiosSecure.get(`/myEnrollCourse/${user?.email}`);
       return res.data;
     },
   });
 
-  console.log(myEnrollCourse);
+  // console.log(myEnrollCourse);
   return (
     <div className="bg-gray-100 py-10">
       <div className="w-11/12 mx-auto ">

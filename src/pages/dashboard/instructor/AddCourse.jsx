@@ -248,6 +248,7 @@ import axios from "axios";
 import useAuth from "@/hooks/useAuth";
 import useAxiosPublic from "@/hooks/useAxiosPublic";
 import toast from "react-hot-toast";
+import useAxiosSecure from "@/hooks/useAxiosSecure";
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
@@ -265,6 +266,8 @@ const options = [
 const AddCourse = () => {
   const { user } = useAuth();
   const axiosPublic = useAxiosPublic();
+  const axiosSecure = useAxiosSecure();
+
   const { register, handleSubmit, control } = useForm();
   const [lectures, setLectures] = useState([{ title: "", video: null }]);
   const [selectedOption, setSelectedOption] = useState(null);
@@ -334,15 +337,15 @@ const AddCourse = () => {
       description: data.description,
     };
 
-    axiosPublic.post("/courses", courseInfo).then((res) => {
-      console.log(res);
+    axiosSecure.post("/courses", courseInfo).then((res) => {
+      // console.log(res);
       console.log(res.data.insertedId);
       if (res.data.insertedId) {
         toast.success("Course added successfully! ✅");
       }
     });
 
-    console.log("courseInfo", courseInfo);
+    // console.log("courseInfo", courseInfo);
     // console.log(user.email, user.displayName, user.photoURL);
   };
 

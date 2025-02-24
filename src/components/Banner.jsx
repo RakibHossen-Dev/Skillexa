@@ -8,6 +8,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import { useContext } from "react";
 import { AuthContext } from "@/providers/Authprovider";
+import { Link } from "react-router-dom";
 const Banner = () => {
   const { user } = useContext(AuthContext);
 
@@ -47,13 +48,17 @@ const Banner = () => {
                       My Courses
                     </button>
                   ) : (
-                    <button className="py-2 md:w-auto w-full mt-5 px-4 bg-blue-700 rounded-md hover:bg-blue-900  ease-linear duration-200">
-                      Create your free account
-                    </button>
+                    <Link to="/signup">
+                      <button className="py-2 md:w-auto w-full mt-5 px-4 bg-blue-700 rounded-md hover:bg-blue-900  ease-linear duration-200">
+                        Create your free account
+                      </button>
+                    </Link>
                   )}
-                  <button className="py-2 mt-5 px-4 w-full md:w-60 rounded-md hover:border-blue-900  hover:bg-blue-900  border border-blue-700 ease-linear duration-200">
-                    View Courses
-                  </button>
+                  <Link to="/allCourse">
+                    <button className="py-2 mt-5 px-4 w-full md:w-60 rounded-md hover:border-blue-900  hover:bg-blue-900  border border-blue-700 ease-linear duration-200">
+                      View Courses
+                    </button>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -83,13 +88,17 @@ const Banner = () => {
                       My Courses
                     </button>
                   ) : (
-                    <button className="py-2 md:w-auto w-full mt-5 px-4 bg-blue-700 rounded-md hover:bg-blue-900  ease-linear duration-200">
-                      Create your free account
-                    </button>
+                    <Link to="/signup">
+                      <button className="py-2 md:w-auto w-full mt-5 px-4 bg-blue-700 rounded-md hover:bg-blue-900  ease-linear duration-200">
+                        Create your free account
+                      </button>
+                    </Link>
                   )}
-                  <button className="py-2 mt-5 px-4 w-full md:w-60 rounded-md hover:border-blue-900  hover:bg-blue-900  border border-blue-700 ease-linear duration-200">
-                    View Courses
-                  </button>
+                  <Link to="/allCourse">
+                    <button className="py-2 mt-5 px-4 w-full md:w-60 rounded-md hover:border-blue-900  hover:bg-blue-900  border border-blue-700 ease-linear duration-200">
+                      View Courses
+                    </button>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -118,13 +127,18 @@ const Banner = () => {
                       My Courses
                     </button>
                   ) : (
-                    <button className="py-2 md:w-auto w-full mt-5 px-4 bg-blue-700 rounded-md hover:bg-blue-900  ease-linear duration-200">
-                      Create your free account
-                    </button>
+                    <Link to="/signup">
+                      <button className="py-2 md:w-auto w-full mt-5 px-4 bg-blue-700 rounded-md hover:bg-blue-900  ease-linear duration-200">
+                        Create your free account
+                      </button>
+                    </Link>
                   )}
-                  <button className="py-2 mt-5 px-4 w-full md:w-60 rounded-md hover:border-blue-900  hover:bg-blue-900  border border-blue-700 ease-linear duration-200">
-                    View Courses
-                  </button>
+                  {/* <Link to="/"></Link> */}
+                  <Link to="/allCourse">
+                    <button className="py-2 mt-5 px-4 w-full md:w-60 rounded-md hover:border-blue-900  hover:bg-blue-900  border border-blue-700 ease-linear duration-200">
+                      View Courses
+                    </button>
+                  </Link>
                 </div>
               </div>
             </div>

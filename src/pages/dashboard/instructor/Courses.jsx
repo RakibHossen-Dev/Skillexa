@@ -18,6 +18,7 @@ import { Input } from "@/components/ui/input";
 import Swal from "sweetalert2";
 import { useForm } from "react-hook-form";
 import axios from "axios";
+import useAxiosSecure from "@/hooks/useAxiosSecure";
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
@@ -33,6 +34,8 @@ const Courses = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   // console.log(user);
   const axiosPublic = useAxiosPublic();
+  const axiosSecure = useAxiosSecure();
+
   const { data: instructorCourses, refetch } = useQuery({
     queryKey: ["instructorCours", user?.email],
     queryFn: async () => {
@@ -49,9 +52,9 @@ const Courses = () => {
   };
 
   const onSubmit = async (data) => {
-    console.log(data);
+    // console.log(data);
 
-    console.log(data);
+    // console.log(data);
     const imageFile = { image: data.image[0] };
 
     const res = await axios.post(image_hosting_api, imageFile, {
@@ -65,7 +68,7 @@ const Courses = () => {
       courseBanner: res.data.data.display_url,
       price: data.price,
     };
-    axiosPublic
+    axiosSecure
       .patch(`/instructorCourseUpdate/${updateId}`, courseUpdateInfo)
       .then((res) => {
         console.log(res);
@@ -79,7 +82,7 @@ const Courses = () => {
         }
       });
 
-    console.log(courseUpdateInfo);
+    // console.log(courseUpdateInfo);
     // console.log(updateId);
     setIsModalOpen(false);
   };
@@ -96,7 +99,7 @@ const Courses = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        axiosPublic.delete(`/instructorCourseDelete/${id}`).then((res) => {
+        axiosSecure.delete(`/instructorCourseDelete/${id}`).then((res) => {
           console.log(res);
           if (res.data.deletedCount > 0) {
             refetch();

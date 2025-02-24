@@ -1,17 +1,18 @@
 import { FaUsers, FaBookOpen, FaDollarSign, FaUserPlus } from "react-icons/fa";
 import { Chart } from "react-google-charts";
-import useAxiosPublic from "@/hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
+import useAxiosSecure from "@/hooks/useAxiosSecure";
 const AdminDashboard = () => {
-  const axiosPublic = useAxiosPublic();
+  const axiosSecure = useAxiosSecure();
+
   const { data: adminStats } = useQuery({
     queryKey: ["adminStats"],
     queryFn: async () => {
-      const res = await axiosPublic.get(`/admin/stats`);
+      const res = await axiosSecure.get(`/admin/stats`);
       return res.data;
     },
   });
-  console.log(adminStats);
+  // console.log(adminStats);
   const data = [
     ["Element", "Density", { role: "style" }],
     ["All User", adminStats?.totalUsers, "#e74c3c"],

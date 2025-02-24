@@ -11,8 +11,11 @@ import {
 } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
 import Swal from "sweetalert2";
+import useAxiosSecure from "@/hooks/useAxiosSecure";
 const AdminAllCoures = () => {
   const axiosPublic = useAxiosPublic();
+  const axiosSecure = useAxiosSecure();
+
   const { data: adminAllCourses = [], refetch } = useQuery({
     queryKey: ["allCourse"],
     queryFn: async () => {
@@ -20,7 +23,7 @@ const AdminAllCoures = () => {
       return res.data;
     },
   });
-  console.log(adminAllCourses);
+  // console.log(adminAllCourses);
   const handleDeleteCourse = (id) => {
     console.log(id);
     Swal.fire({
@@ -33,7 +36,7 @@ const AdminAllCoures = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        axiosPublic.delete(`/instructorCourseDelete/${id}`).then((res) => {
+        axiosSecure.delete(`/instructorCourseDelete/${id}`).then((res) => {
           console.log(res);
           if (res.data.deletedCount > 0) {
             refetch();

@@ -1,4 +1,3 @@
-import useAxiosPublic from "@/hooks/useAxiosPublic";
 import { AuthContext } from "@/providers/Authprovider";
 import { useQuery } from "@tanstack/react-query";
 import { useContext } from "react";
@@ -11,13 +10,15 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import useAxiosSecure from "@/hooks/useAxiosSecure";
 const Students = () => {
   const { user } = useContext(AuthContext);
-  const axiosPublic = useAxiosPublic();
+  const axiosSecure = useAxiosSecure();
+
   const { data: courseStats = [] } = useQuery({
     queryKey: ["instrutor"],
     queryFn: async () => {
-      const res = await axiosPublic.get(`/instructor/${user.email}/students`);
+      const res = await axiosSecure.get(`/instructor/${user.email}/students`);
       return res.data;
     },
   });

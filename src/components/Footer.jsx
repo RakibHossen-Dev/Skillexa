@@ -134,7 +134,7 @@ const Footer = () => {
           <div className="border-dotted border-b my-10 border-white "></div>
 
           <p className="w-11/12 mx-auto text-white">
-            © 2024 Skillexa Inc. All rights reserved.
+            © 2024 - 2025 Skillexa Inc. All rights reserved.
           </p>
         </div>
       </div>

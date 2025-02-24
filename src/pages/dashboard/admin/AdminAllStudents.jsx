@@ -1,4 +1,3 @@
-import useAxiosPublic from "@/hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
 import {
   Table,
@@ -11,20 +10,22 @@ import {
 } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
 import Swal from "sweetalert2";
+import useAxiosSecure from "@/hooks/useAxiosSecure";
 
 const AdminAllStudents = () => {
-  const axiosPublic = useAxiosPublic();
+  const axiosSecure = useAxiosSecure();
+
   const { data: allUsers = [], refetch } = useQuery({
     queryKey: ["allUser"],
     queryFn: async () => {
-      const res = await axiosPublic.get("/allUsers");
+      const res = await axiosSecure.get("/allUsers");
       return res.data;
     },
   });
-  console.log(allUsers);
+  // console.log(allUsers);
 
   const handleMakeInstructor = (id) => {
-    axiosPublic
+    axiosSecure
       .patch(`/changeRole/${id}`, { role: "instructor" })
       .then((res) => {
         refetch();
@@ -50,7 +51,7 @@ const AdminAllStudents = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        axiosPublic.delete(`/deleteUser/${id}`).then((res) => {
+        axiosSecure.delete(`/deleteUser/${id}`).then((res) => {
           console.log(res);
           if (res.data.deletedCount > 0) {
             refetch();

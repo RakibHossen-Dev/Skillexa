@@ -127,7 +127,7 @@ const categories = [
   { name: "Language Learning", image: languageLearning },
   { name: "Teaching", image: teaching },
   { name: "Passive Income", image: passiveIcome },
-  { name: "Photography", image: photoGraphy },
+  { name: "Photo Graphy", image: photoGraphy },
 ];
 
 const PopularCategories = () => {

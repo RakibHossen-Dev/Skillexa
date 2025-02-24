@@ -18,13 +18,11 @@ const AllCourse = () => {
   const [isOpen, setIsOpen] = useState(false);
   const toggleMenu = () => setIsOpen(!isOpen);
 
-  // ফিল্টার স্টেট
   const [selectedCategory, setSelectedCategory] = useState([]);
   const [selectedDifficulty, setSelectedDifficulty] = useState([]);
   const [selectedLanguage, setSelectedLanguage] = useState([]);
   const [sortOption, setSortOption] = useState(""); // Sorting state
 
-  // ফিল্টার পরিবর্তনের হ্যান্ডলার
   const handleFilterChange = (type, value) => {
     if (type === "category") {
       setSelectedCategory((prev) =>
@@ -116,7 +114,7 @@ const AllCourse = () => {
 
         <div className="grid lg:grid-cols-12 lg:gap-10">
           {/* Filter Sidebar */}
-          <div className="lg:col-span-3">
+          <div className="lg:col-span-3 lg:flex lg:flex-col grid grid-cols-2 gap-3">
             <div className="space-y-2">
               <h3 className="text-xl font-bold mb-3">Category</h3>
               {[
@@ -154,7 +152,7 @@ const AllCourse = () => {
               ))}
             </div>
 
-            <div className="space-y-2">
+            <div className="space-y-2 mb-5">
               <h3 className="text-xl font-bold mb-3">Language</h3>
               {["English", "Bangla", "German", "Hindi", "Spanish"].map(
                 (lang) => (

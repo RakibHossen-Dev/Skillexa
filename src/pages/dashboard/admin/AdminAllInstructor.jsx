@@ -6,7 +6,6 @@
 
 // export default AdminAllInstructor;
 
-import useAxiosPublic from "@/hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
 import {
   Table,
@@ -19,20 +18,22 @@ import {
 } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
 import Swal from "sweetalert2";
+import useAxiosSecure from "@/hooks/useAxiosSecure";
 const AdminAllInstructor = () => {
-  const axiosPublic = useAxiosPublic();
+  const axiosSecure = useAxiosSecure();
+
   const { data: allUsers = [], refetch } = useQuery({
     queryKey: ["allUser"],
     queryFn: async () => {
-      const res = await axiosPublic.get("/allUsers");
+      const res = await axiosSecure.get("/allUsers");
       return res.data;
     },
   });
-  console.log(allUsers);
+  // console.log(allUsers);
 
   const handleMakeAdmin = (id) => {
     // console.log(admin, id);
-    axiosPublic.patch(`/changeRole/${id}`, { role: "admin" }).then((res) => {
+    axiosSecure.patch(`/changeRole/${id}`, { role: "admin" }).then((res) => {
       refetch();
       if (res.data.modifiedCount > 0) {
         Swal.fire({
@@ -56,7 +57,7 @@ const AdminAllInstructor = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        axiosPublic.delete(`/deleteUser/${id}`).then((res) => {
+        axiosSecure.delete(`/deleteUser/${id}`).then((res) => {
           console.log(res);
           if (res.data.deletedCount > 0) {
             refetch();
@@ -143,7 +144,7 @@ const AdminAllInstructor = () => {
               {allUsers
                 ?.filter((allUser) => allUser.role === "instructor")
                 .map((allUser) => (
-                  <tr>
+                  <tr key={allUser._id}>
                     <th>
                       {" "}
                       <img
