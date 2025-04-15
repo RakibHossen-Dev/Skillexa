@@ -35,21 +35,21 @@ const Signin = () => {
     });
   };
 
-  const handleFacebookSignIn = async () => {
-    await facebookSignIn().then((result) => {
-      const userInfo = {
-        name: result.user?.displayName,
-        email: result.user?.email,
-        photo: result.user?.photoURL,
-        role: "student",
-      };
-      axiosPublic.post("/users", userInfo).then((res) => {
-        console.log(res);
-        navigate("/");
-        toast.success("Signin Successful");
-      });
-    });
-  };
+  // const handleFacebookSignIn = async () => {
+  //   await facebookSignIn().then((result) => {
+  //     const userInfo = {
+  //       name: result.user?.displayName,
+  //       email: result.user?.email,
+  //       photo: result.user?.photoURL,
+  //       role: "student",
+  //     };
+  //     axiosPublic.post("/users", userInfo).then((res) => {
+  //       console.log(res);
+  //       navigate("/");
+  //       toast.success("Signin Successful");
+  //     });
+  //   });
+  // };
   const onSubmit = async (data) => {
     console.log(data);
     signIn(data.email, data.password).then((res) => {
@@ -76,16 +76,15 @@ const Signin = () => {
           </button>
 
           {/* Facebook Sign-in Button */}
-          <button
+          {/* <button
             onClick={handleFacebookSignIn}
             className="border my-3 py-2 border-blue-600 bg-blue-600 text-white w-full flex items-center justify-center rounded-lg hover:bg-blue-700 transition"
           >
             <FaFacebook className="text-xl mr-2" />
             <span className="font-medium">
-              {/* Sign in with  */}
               Facebook
             </span>
-          </button>
+          </button> */}
         </div>
 
         {/* <p className="text-center text-gray-500 dark:text-gray-300">OR</p> */}
